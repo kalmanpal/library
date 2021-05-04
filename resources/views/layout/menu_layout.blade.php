@@ -64,25 +64,17 @@
             <div class="menu__wrap">
                 <ul data-menu="main" class="menu__level" tabindex="-1" role="menu" aria-label="Kezdőlap">
                     <li><a class="menu__link" href="/home">Kezdőlap</a></li>
-
+                    @if(Auth::user()->type === "D")
                         <li><a class="menu__link" href='/books'>Könyvek</a></li>
                         <li><a class="menu__link" href="/rental">Kölcsönzések</a></li>
                         <li><a class="menu__link" href="/reservations">Foglalások</a></li>
                         <li><a class="menu__link" href="/users">Felhasználók</a></li>
-
+                    @else
                         <li><a class="menu__link" href="/book_reservation">Foglalás</a></li>
                         <li><a class="menu__link" href='/myhistory'>Kölcsönzés előzmények</a></li>
-
+                    @endif
                     <li><a class="menu__link" href='/data_update'>Személyes adatok</a></li>
                 </ul>
-
-                <!-- Submenu 1 FOGLALASOK MENUPONT-->
-
-                <!-- Submenu 1-1 KERESES ALMENUPONT -->
-
-                <!-- Submenu 2 KOLCSONZES ELOZMENYEK MENUPONT-->
-
-                <!-- Submenu 3 SZEMELYES ADATOK MENUPONT-->
 
             </div>
         </nav>
