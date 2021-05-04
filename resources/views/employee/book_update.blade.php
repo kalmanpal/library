@@ -193,6 +193,13 @@
         </style>
     </head>
 
+    @if (!(Auth::user()->type === "D"))
+        <script>
+            window.location = "/main/successlogin";
+
+        </script>
+    @endif
+
     <body>
         <div class="main-block">
             <form action="/">

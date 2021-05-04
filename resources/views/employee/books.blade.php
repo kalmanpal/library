@@ -107,7 +107,12 @@
 
     </style>
 
+    @if (!(Auth::user()->type === "D"))
+        <script>
+            window.location = "/main/successlogin";
 
+        </script>
+    @endif
 
     <section>
         <!--for demo wrap-->
