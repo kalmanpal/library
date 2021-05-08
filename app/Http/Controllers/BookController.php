@@ -4,19 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Stock;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
 
-    function show()
+    function showBooks()
     {
-        $data = Book::all();
+        $data = DB::table('books')->join('stocks', 'books.isbn', "=", 'stocks.isbn')->get();
         return view('employee/books', ['books' => $data]);
     }
+
+
     function delete($id)
     {
-        $data = Book::find($id);
+        $data = Stock::find($id);
         $data->delete();
+        $data2 = Book::find($id);
+        $data2->delete();
         return redirect('/books');
     }
 

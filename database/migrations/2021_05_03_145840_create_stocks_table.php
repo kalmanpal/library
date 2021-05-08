@@ -15,6 +15,10 @@ class CreateStocksTable extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
+            $table->integer('max_number');
+            $table->integer('number');
+            $table->char('isbn', 13)->unique();
+            $table->foreign('isbn')->references('isbn')->on('books');
             $table->timestamps();
         });
     }

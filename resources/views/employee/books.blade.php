@@ -107,7 +107,7 @@
 
     </style>
 
-    @if (!(Auth::user()->type === "D"))
+    @if (!(Auth::user()->type === 'D'))
         <script>
             window.location = "/main/successlogin";
 
@@ -128,6 +128,7 @@
                         <th>Kiadás</th>
                         <th>Elérhető (db)</th>
                         <th>Összes (db)</th>
+                        <th>Művelet</th>
                     </tr>
                 </thead>
             </table>
@@ -137,14 +138,14 @@
                 <tbody>
                     @foreach ($books as $book)
                         <tr>
-                            <td>{{ $book['title'] }}</td>
-                            <td>{{ $book['writer'] }}</td>
-                            <td>{{ $book['isbn'] }}</td>
-                            <td>{{ $book['year'] }}</td>
-                            <td>{{ $book['edition'] }}</td>
-                            <td>10</td>
-                            <td>10</td>
-                            <td><a href="delete/{{ $book['id'] }}">Delete</a></td>
+                            <td>{{ $book->title }}</td>
+                            <td>{{ $book->writer }}</td>
+                            <td>{{ $book->isbn }}</td>
+                            <td>{{ $book->year }}</td>
+                            <td>{{ $book->edition }}</td>
+                            <td>{{ $book->number }}</td>
+                            <td>{{ $book->max_number }}</td>
+                            <td><a href="delete/{{ $book->id }}">Delete</a></td>
                         </tr>
                     @endforeach
                 </tbody>

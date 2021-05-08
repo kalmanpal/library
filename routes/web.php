@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\StockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +62,7 @@ Route::get('/home', function () {
 
 //-------------------------------------------employee-------------------------------------------------------
 
-Route::get('books',[BookController::class,'show']);
+Route::get('books',[BookController::class,'showBooks']);
 Route::get('delete/{id}',[BookController::class,'delete']);
 
 Route::view('/new_book','employee/new_book');
@@ -82,3 +83,6 @@ Route::get('/rental', function () {
 
 Route::get('/reservations',[ReservationController::class,'show']);
 
+//--------------------------------------------------------tests------------------------------------------------------
+
+Route::get('/test', [StockController::class, 'showBooks']);
