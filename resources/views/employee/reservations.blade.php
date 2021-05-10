@@ -132,11 +132,10 @@
             <table cellpadding="0" cellspacing="0" border="0">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Név</th>
                         <th>Foglalás dátuma</th>
-                        <th>E-mail</th>
-                        <th>Típus</th>
+                        <th>ISBN</th>
+                        <th>Cím</th>
                     </tr>
                 </thead>
             </table>
@@ -144,133 +143,14 @@
         <div class="tbl-content">
             <table cellpadding="1" cellspacing="1" border="0">
                 <tbody>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-                    <tr>
-                        <td>54321</td>
-                        <td>Nagy Ákos</td>
-                        <td>2021.02.04</td>
-                        <td>nagyakos@gmail.com</td>
-                        <td>ELTE egyetemi hallgató</td>
-                    </tr>
-
+                    @foreach ($reservations as $item)
+                        <tr>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->date }}</td>
+                            <td>{{ $item->isbn }}</td>
+                            <td>{{ $item->title }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

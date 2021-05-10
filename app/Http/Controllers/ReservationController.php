@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reservation;
-use App\Models\Book;
+use Illuminate\Support\Facades\DB;
+
 
 class ReservationController extends Controller
 {
 
-    function show()
+    function showReservations()
     {
-        $data = Reservation::all();
+        $data = DB::table('reservations')->join('books', 'reservations.isbn', "=", 'books.isbn')->join('users','reservations.email', "=", 'users.email')->get();
         return view('employee/reservations', ['reservations' => $data]);
     }
 
