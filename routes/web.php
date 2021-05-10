@@ -19,9 +19,8 @@ use App\Http\Controllers\StockController;
 
 //----------------------------------------register---------------------------------------------------------
 
-Route::get('/register', function () {
-    return view('authentication/register');
-});
+Route::view('/register','authentication/register');
+Route::post('register',[UserController::class,'register']);
 
 //---------------------------------------------------------------------------------------------------------
 
