@@ -80,8 +80,9 @@ Route::get('/rental', function () {
     return view('employee/rental');
 });
 
-Route::get('/reservations',[ReservationController::class,'show']);
+Route::get('/reservations',[ReservationController::class,'showReservations']);
 
 //--------------------------------------------------------tests------------------------------------------------------
 
 Route::get('/test', [StockController::class, 'showBooks']);
+
