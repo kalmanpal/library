@@ -13,4 +13,7 @@ class RentalController extends Controller
         $data = DB::table('rentals')->join('stocks', 'rentals.isbn', "=", 'stocks.isbn')->join('users','rentals.email', "=", 'users.email')->get();
         return view('employee/rental', ['rentals' => $data]);
     }
+
+
+
 }

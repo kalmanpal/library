@@ -138,6 +138,7 @@
                         <th>ISBN</th>
                         <th>Kiadás éve</th>
                         <th>Kiadás</th>
+                        <th>Művelet</th>
                     </tr>
                 </thead>
             </table>
@@ -145,13 +146,14 @@
         <div class="tbl-content">
             <table cellpadding="1" cellspacing="1" border="0">
                 <tbody>
-                    @foreach ($books as $book)
+                    @foreach ($books as $item)
                         <tr>
-                            <td>{{ $book['title'] }}</td>
-                            <td>{{ $book['writer'] }}</td>
-                            <td>{{ $book['isbn'] }}</td>
-                            <td>{{ $book['year'] }}</td>
-                            <td>{{ $book['edition'] }}</td>
+                            <td>{{ $item->title }}</td>
+                            <td>{{ $item->writer }}</td>
+                            <td>{{ $item->isbn }}</td>
+                            <td>{{ $item->year }}</td>
+                            <td>{{ $item->edition }}</td>
+                            <td>Foglalás</td>
                         </tr>
                     @endforeach
                 </tbody>
