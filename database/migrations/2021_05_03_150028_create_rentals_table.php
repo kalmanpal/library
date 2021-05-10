@@ -16,7 +16,7 @@ class CreateRentalsTable extends Migration
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
             $table->date('out_date');
-            $table->date('in_date');
+            $table->date('in_date')->nullable();
             $table->date('deadline');
             $table->char('isbn', 13)->references('isbn')->on('stocks');
             $table->string('email')->references('email')->on('users');

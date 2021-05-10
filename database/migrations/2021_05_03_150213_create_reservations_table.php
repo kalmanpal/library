@@ -15,7 +15,7 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->date('date')->unique();
+            $table->date('date');
             $table->string('email')->references('email')->on('users');
             $table->char('isbn', 13)->references('isbn')->on('books');
             $table->timestamps();
