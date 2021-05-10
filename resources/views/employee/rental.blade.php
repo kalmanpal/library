@@ -132,13 +132,11 @@
             <table cellpadding="0" cellspacing="0" border="0">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Név</th>
                         <th>Kölcsönzés dátuma</th>
-                        <th>Visszavétel dátuma</th>
                         <th>Visszavétel határidő</th>
-                        <th>Könyv ID</th>
-                        <th>Action</th>
+                        <th>ISBN</th>
+                        <th>Művelet</th>
                     </tr>
                 </thead>
             </table>
@@ -146,15 +144,15 @@
         <div class="tbl-content">
             <table cellpadding="1" cellspacing="1" border="0">
                 <tbody>
-                    <tr>
-                        <td>12345</td>
-                        <td>Kiss István</td>
-                        <td>2021.04.20</td>
-                        <td>----</td>
-                        <td>2021.05.20</td>
-                        <td>54321</td>
-                        <td>Kiadás</td>
-                    </tr>
+                    @foreach ($rentals as $item)
+                        <tr>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->out_date }}</td>
+                            <td>{{ $item->deadline }}</td>
+                            <td>{{ $item->isbn }}</td>
+                            <td>Visszavétel</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
