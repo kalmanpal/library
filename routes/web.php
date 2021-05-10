@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\RentalController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StockController;
 
@@ -77,9 +78,7 @@ Route::get('/users',[UserController::class,'show']);
 Route::view('/new_user','employee/new_user');
 Route::post('new_user',[UserController::class,'addData']);
 
-Route::get('/rental', function () {
-    return view('employee/rental');
-});
+Route::get('/rental',[RentalController::class,'showRentals']);
 
 Route::get('/reservations',[ReservationController::class,'showReservations']);
 
