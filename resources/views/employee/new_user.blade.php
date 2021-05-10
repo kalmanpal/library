@@ -204,7 +204,7 @@
 
     <body>
         <div class="main-block">
-            <form action="" method="POST" id="form" name="asd" form="myForm">
+            <form action="" method="POST" id="form" form="myForm">
                 @csrf
                 <h1>Adja meg az új felhasználó adatait!</h1>
                 <fieldset>
@@ -212,7 +212,7 @@
                         <h3>Fiók információk</h3>
                     </legend>
                     <div class="account-details">
-                        <div><label>Email*</label><input type="text" name="t_email" required></div>
+                        <div><label>Email*</label><input type="text" name="email" required></div>
                     </div>
                 </fieldset>
                 <legend>
@@ -220,14 +220,14 @@
                 </legend>
                 <div class="personal-details">
                     <div>
-                        <div><label>Teljes név*</label><input type="text" name="t_name" required></div>
-                        <div><label>Település*</label><input type="text" name="t_city" required></div>
-                        <div><label>Cím*</label><input type="text" name="t_address" required></div>
-                        <div><label>Jelszó*</label><input type="password" name="t_password" required></div>
+                        <div><label>Teljes név*</label><input type="text" name="name" required></div>
+                        <div><label>Település*</label><input type="text" name="city" required></div>
+                        <div><label>Cím*</label><input type="text" name="address" required></div>
+                        <div><label>Jelszó*</label><input type="password" name="password" required></div>
                         <div>
                             <label>Hallgatói státusz*</label>
-                            <select name="t_type">
-                                <option value="" name="type">Válasszon...</option>
+                            <select name="type">
+                                <option value="">Válasszon...</option>
                                 <option value="EH" type="text" name="type">ELTE hallgató</option>
                                 <option value="EO" type="text" name="type">ELTE oktató</option>
                                 <option value="ME" type="text" name="type">Másik egyetem hallgatója, vagy oktatója</option>

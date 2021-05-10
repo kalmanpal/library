@@ -27,6 +27,20 @@ class UserController extends Controller
         return redirect('/users');
     }
 
+    function register(Request $req)
+    {
+        $user = new User;
+        $user-> email=$req->email;
+        $user-> name=$req->name;
+        $user-> city=$req->city;
+        $user-> address=$req->address;
+        $user-> password=$req->password;
+        $user-> type=$req->type;
+        $user-> save();
+        return redirect('/login');
+    }
+
+
 
 
 }
