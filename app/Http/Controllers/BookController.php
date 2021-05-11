@@ -41,11 +41,11 @@ class BookController extends Controller
 
     function search1(Request $request){
         // Get the search value from the request
-        $search = $request->input('search');
+        $search = $request->input('search1');
     
         // Search in the title and body columns from the posts table
         $books = Book::query()
-            ->where('name', 'LIKE', "%{$search}%")
+            ->where('title', 'LIKE', "%{$search}%")
             ->get();
     
         // Return the search view with the resluts compacted

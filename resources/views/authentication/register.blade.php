@@ -30,7 +30,7 @@
             outline: none;
             font-family: Roboto, Arial, sans-serif;
             font-size: 14px;
-            color: #fff;
+            color: black;
         }
 
         h1 {
@@ -201,7 +201,7 @@
     @endif
 
     <div class="main-block">
-        <form action="" method="POST" id="form" form="myForm">
+        <form action="/edit" method="POST" id="form" form="myForm">
             @csrf
             <h1>Hozzon létre egy felhaszálói fiókot!</h1>
             <fieldset>

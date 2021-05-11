@@ -49,6 +49,7 @@ Route::get('/myhistory',[RentalController::class,'showMyRentals']);
 Route::get('/data_update', function () {
     return view('/common/data_update');
 });
+Route::post('/edit',[UserController::class,'update']);
 
 Route::get('/home', function () {
     return view('/common/home');
@@ -83,3 +84,6 @@ Route::get('/reservations',[ReservationController::class,'showReservations']);
 
 Route::get('/test', [StockController::class, 'showBooks']);
 
+
+
+Route::get('send-mail','MailSend@mailsend');

@@ -195,17 +195,19 @@
 
     <body>
         <div class="main-block">
-            <form action="/">
+            <form action="/edit" method="POST" id="form" form="myForm">
+            @csrf
+                <input type="hidden" name="id" value= "{{ Auth::user()->id }}"> 
                 <h1>Saját fiók</h1>
                 <fieldset>
                     <legend>
                         <h3>Fiók információk</h3>
                     </legend>
                     <div class="account-details">
-                        <div><label>Email*</label><input type="text" name="name" required></div>
+                        <div><label>Email*</label><input type="text" name="email" value= "{{ Auth::user()->email }}" required></div>
                         <div></div>
-                        <div><label>Jelszó*</label><input type="password" name="name" required></div>
-                        <div><label>Jelszó újra*</label><input type="password" name="name" required></div>
+                        <div><label>Jelszó*</label><input type="password" name="password"></div>
+                        <div><label>Jelszó újra*</label><input type="password" name="passwordvar"></div>
                     </div>
                 </fieldset>
                 <fieldset>
@@ -214,13 +216,13 @@
                     </legend>
                     <div class="personal-details">
                         <div>
-                            <div><label>Teljes név*</label><input type="text" name="name" required></div>
-                            <div><label>Település*</label><input type="text" name="name" required></div>
-                            <div><label>Cím*</label><input type="text" name="name" required></div>
+                            <div><label>Teljes név*</label><input type="text" name="name" value= "{{ Auth::user()->name }}"></div>
+                            <div><label>Település*</label><input type="text" name="city" value= "{{ Auth::user()->city }}"></div>
+                            <div><label>Cím*</label><input type="text" name="address" value= "{{ Auth::user()->address }}"></div>
                         </div>
                     </div>
                 </fieldset>
-                <button type="submit" href="/">Adatok módosítása</button>
+                <button type="submit">Adatok módosítása</button>
             </form>
         </div>
     </body>
