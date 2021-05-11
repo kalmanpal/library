@@ -38,9 +38,7 @@ Route::get('main/logout', 'App\Http\Controllers\MainController@logout');
 
 Route::get('/book_reservation',[ReservationController::class,'showBooks']);
 
-Route::get('/myreservations', function () {
-    return view('/member/myreservations');
-});
+Route::get('/myreservations',[ReservationController::class,'showMyReservations']);
 
 Route::get('/myhistory',[RentalController::class,'showMyRentals']);
 

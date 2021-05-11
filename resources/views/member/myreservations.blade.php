@@ -125,8 +125,8 @@
                         <th>Szerző(k)</th>
                         <th>ISBN</th>
                         <th>Kiadás éve</th>
-                        <th>Kiadás</th>
-                        <th>Átvehető eddig</th>
+                        <th>Foglalás időpontja</th>
+                        <th>Művelet</th>
                     </tr>
                 </thead>
             </table>
@@ -134,70 +134,16 @@
         <div class="tbl-content">
             <table cellpadding="1" cellspacing="1" border="0">
                 <tbody>
-                    <tr>
-                        <td>Kincskereső kisködmön</td>
-                        <td>Móra Ferenc</td>
-                        <td>9789634157984</td>
-                        <td>2020</td>
-                        <td>5.</td>
-                        <td>2021-04-22</td>
-                    </tr>
-                    <tr>
-                        <td>Abigél</td>
-                        <td>Szabó Magda</td>
-                        <td>9789634158493</td>
-                        <td>2017</td>
-                        <td>1.</td>
-                        <td>2021-04-23</td>
-                    </tr>
-                    <tr>
-                        <td>Kincskereső kisködmön</td>
-                        <td>Móra Ferenc</td>
-                        <td>9789634157984</td>
-                        <td>2020</td>
-                        <td>5.</td>
-                        <td>2021-04-22</td>
-                    </tr>
-                    <tr>
-                        <td>Abigél</td>
-                        <td>Szabó Magda</td>
-                        <td>9789634158493</td>
-                        <td>2017</td>
-                        <td>1.</td>
-                        <td>2021-04-23</td>
-                    </tr>
-                    <tr>
-                        <td>Kincskereső kisködmön</td>
-                        <td>Móra Ferenc</td>
-                        <td>9789634157984</td>
-                        <td>2020</td>
-                        <td>5.</td>
-                        <td>2021-04-22</td>
-                    </tr>
-                    <tr>
-                        <td>Abigél</td>
-                        <td>Szabó Magda</td>
-                        <td>9789634158493</td>
-                        <td>2017</td>
-                        <td>1.</td>
-                        <td>2021-04-23</td>
-                    </tr>
-                    <tr>
-                        <td>Kincskereső kisködmön</td>
-                        <td>Móra Ferenc</td>
-                        <td>9789634157984</td>
-                        <td>2020</td>
-                        <td>5.</td>
-                        <td>2021-04-22</td>
-                    </tr>
-                    <tr>
-                        <td>Abigél</td>
-                        <td>Szabó Magda</td>
-                        <td>9789634158493</td>
-                        <td>2017</td>
-                        <td>1.</td>
-                        <td>2021-04-23</td>
-                    </tr>
+                    @foreach ($reservations as $item)
+                        <tr>
+                            <td>{{ $item->title }}</td>
+                            <td>{{ $item->writer }}</td>
+                            <td>{{ $item->isbn }}</td>
+                            <td>{{ $item->year }}</td>
+                            <td>{{ $item->date }}</td>
+                            <td>Törlés</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
