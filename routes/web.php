@@ -42,9 +42,7 @@ Route::get('/myreservations', function () {
     return view('/member/myreservations');
 });
 
-Route::get('/myhistory', function () {
-    return view('/member/rental_history');
-});
+Route::get('/myhistory',[RentalController::class,'showMyRentals']);
 
 //----------------------------------------------------------------------------------------------------------
 

@@ -121,9 +121,8 @@
         <table cellpadding="0" cellspacing="0" border="0">
           <thead>
             <tr>
-              <th>Könyv címe</th>
-              <th>ISBN</th>
               <th>Kölcsönzés dátuma</th>
+              <th>Könyv</th>
               <th>Visszavétel határideje</th>
               <th>Visszavétel dátuma</th>
             </tr>
@@ -133,76 +132,14 @@
       <div class="tbl-content">
         <table cellpadding="1" cellspacing="1" border="0">
             <tbody>
-                <tr>
-                    <td>Kincskereső kisködmön</td>
-                    <td>9789634157984</td>
-                    <td>2020-09-11</td>
-                    <td>2020-11-05</td>
-                    <td>2020-10-28</td>
-                  </tr>
-                  <tr>
-                    <td>Abigél</td>
-                    <td>9789634158493</td>
-                    <td>2021-01-05</td>
-                    <td>2021-02-20</td>
-                    <td>2021-02-15</td>
-                  </tr>
-                  <tr>
-                    <td>Kincskereső kisködmön</td>
-                    <td>9789634157984</td>
-                    <td>2020-09-11</td>
-                    <td>2020-11-05</td>
-                    <td>2020-10-28</td>
-                  </tr>
-                  <tr>
-                    <td>Abigél</td>
-                    <td>9789634158493</td>
-                    <td>2021-01-05</td>
-                    <td>2021-02-20</td>
-                    <td>2021-02-15</td>
-                  </tr>
-                  <tr>
-                    <td>Kincskereső kisködmön</td>
-                    <td>9789634157984</td>
-                    <td>2020-09-11</td>
-                    <td>2020-11-05</td>
-                    <td>2020-10-28</td>
-                  </tr>
-                  <tr>
-                    <td>Abigél</td>
-                    <td>9789634158493</td>
-                    <td>2021-01-05</td>
-                    <td>2021-02-20</td>
-                    <td>2021-02-15</td>
-                  </tr>
-                  <tr>
-                    <td>Kincskereső kisködmön</td>
-                    <td>9789634157984</td>
-                    <td>2020-09-11</td>
-                    <td>2020-11-05</td>
-                    <td>2020-10-28</td>
-                  </tr>
-                  <tr>
-                    <td>Abigél</td>
-                    <td>9789634158493</td>
-                    <td>2021-01-05</td>
-                    <td>2021-02-20</td>
-                    <td>2021-02-15</td>
-                  </tr>
-                  <tr>
-                    <td>Kincskereső kisködmön</td>
-                    <td>9789634157984</td>
-                    <td>2020-09-11</td>
-                    <td>2020-11-05</td>
-                    <td>2020-10-28</td>
-                  </tr>
-                  <tr>
-                    <td>Abigél</td>
-                    <td>9789634158493</td>
-                    <td>2021-01-05</td>
-                    <td>2021-02-20</td>
-                    <td>2021-02-15</td>
-                  </tr>
+                @foreach ($rentals as $item)
+                        <tr>
+                            <td>{{ $item->out_date }}</td>
+                            <td>{{ $item->title }}</td>
+                            <td>{{ $item->deadline }}</td>
+                            <td>{{ $item->in_date }}</td>
+                        </tr>
+                    @endforeach
             </tbody>
         </table>
       </div>
