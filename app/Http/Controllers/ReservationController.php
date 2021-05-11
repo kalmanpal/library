@@ -26,7 +26,7 @@ class ReservationController extends Controller
 
     function showMyReservations()
     {
-        $data = DB::table('reservations')->join('books', 'reservations.isbn', "=", 'books.isbn')->join('users','reservations.email', "=", 'users.email')->get();
+        $data = DB::table('reservations')->join('stocks', 'reservations.isbn', "=", 'stocks.isbn')->join('users','reservations.email', "=", 'users.email')->where('email', '=', Auth::user()->email)->get();
         return view('member/myreservations', ['reservations' => $data]);
     }
 
