@@ -38,9 +38,13 @@ Route::get('main/logout', 'App\Http\Controllers\MainController@logout');
 
 Route::get('/book_reservation',[ReservationController::class,'showBooks']);
 
-Route::get('/myreservations',[ReservationController::class,'showMyReservations']);
+Route::get('/myreservations', function () {
+    return view('/member/myreservations');
+});
 
-Route::get('/myhistory',[RentalController::class,'showMyRentals']);
+Route::get('/myhistory', function () {
+    return view('/member/rental_history');
+});
 
 //----------------------------------------------------------------------------------------------------------
 
@@ -60,6 +64,7 @@ Route::get('/home', function () {
 
 Route::get('books',[BookController::class,'showBooks']);
 Route::get('delete/{id}',[BookController::class,'delete']);
+Route::get('search', 'App\Http\Controllers\BookController@search')->name('search');
 
 Route::view('/new_book','employee/new_book');
 Route::post('new_book',[BookController::class,'addData']);
@@ -69,6 +74,7 @@ Route::get('/book_update', function () {
 });
 
 Route::get('/users',[UserController::class,'show']);
+Route::get('search', 'App\Http\Controllers\UserController@search')->name('search');
 
 Route::view('/new_user','employee/new_user');
 Route::post('new_user',[UserController::class,'addData']);
