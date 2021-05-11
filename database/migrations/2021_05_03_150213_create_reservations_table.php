@@ -17,7 +17,7 @@ class CreateReservationsTable extends Migration
             $table->id();
             $table->date('date');
             $table->string('email')->references('email')->on('users');
-            $table->char('isbn', 13)->references('isbn')->on('books');
+            $table->char('isbn', 13)->references('isbn')->on('stocks');
             $table->timestamps();
         });
     }
