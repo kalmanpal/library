@@ -34,8 +34,8 @@ class UserController extends Controller
         $user-> email=$req->email;
         $user-> name=$req->name;
         $user-> city=$req->city;
-        $user-> address=$req->address;
-        $user-> password=Hash::make('password'); $req->password;
+        $user-> address=$req->address;;
+        $user-> password=bcrypt('password'); $req->password;
         $user-> type=$req->type;
         $user-> save();
         return redirect('/');
