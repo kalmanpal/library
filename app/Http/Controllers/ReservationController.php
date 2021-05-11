@@ -20,7 +20,7 @@ class ReservationController extends Controller
 
     function showBooks()
     {
-        $data = DB::table('books')->join('stocks', 'books.isbn', "=", 'stocks.isbn')->get();
+        $data = DB::table('books')->join('stocks', 'books.isbn', "=", 'stocks.isbn')->where('number', '>', 0)->get();
         return view('member/book_reservation ', ['books' => $data]);
     }
 
