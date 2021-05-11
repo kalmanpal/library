@@ -60,7 +60,7 @@ Route::get('/home', function () {
 
 Route::get('books',[BookController::class,'showBooks']);
 Route::get('delete/{id}',[BookController::class,'delete']);
-Route::get('search', 'App\Http\Controllers\BookController@search')->name('search');
+Route::get('search1', 'App\Http\Controllers\BookController@search')->name('search1');
 
 Route::view('/new_book','employee/new_book');
 Route::post('new_book',[BookController::class,'addData']);

@@ -39,7 +39,7 @@ class BookController extends Controller
         return redirect('/books');
     }
 
-    function search(Request $request){
+    function search1(Request $request){
         // Get the search value from the request
         $search = $request->input('search');
     
