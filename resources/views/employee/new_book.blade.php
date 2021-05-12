@@ -224,7 +224,7 @@
                     </legend>
                     <div class="personal-details">
                         <div>
-                            <div><label>Összes könyv (db)*</label><input type="text" name="max_number"></div>
+                            <div><label>Összes könyv (db)*</label><input type="text" name="max_number" required></div>
                         </div>
 
                     </div>

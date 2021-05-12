@@ -201,7 +201,7 @@
     @endif
 
     <div class="main-block">
-        <form action="/edit" method="POST" id="form" form="myForm">
+        <form action="register" method="POST" id="form" form="myForm">
             @csrf
             <h1>Hozzon létre egy felhaszálói fiókot!</h1>
             <fieldset>

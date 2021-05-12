@@ -36,7 +36,7 @@ class UserController extends Controller
         $user-> name=$req->name;
         $user-> city=$req->city;
         $user-> address=$req->address;
-        $user-> password=bcrypt('password'); $req->password;
+        $user-> password=bcrypt($req->password);
         $user-> type=$req->type;
         $user-> save();
         return redirect('/');
