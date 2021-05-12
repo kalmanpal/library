@@ -23,7 +23,7 @@ class UserController extends Controller
         $user-> name=$req->name;
         $user-> city=$req->city;
         $user-> address=$req->address;
-        $user-> password=bcrypt('password'); $req->password;
+        $user-> password=bcrypt($req->password);
         $user-> type=$req->type;
         $user-> save();
         return redirect('/users');
@@ -45,12 +45,12 @@ class UserController extends Controller
     function search(Request $request){
         // Get the search value from the request
         $search = $request->input('search');
-    
+
         // Search in the title and body columns from the posts table
         $users = User::query()
             ->where('name', 'LIKE', "%{$search}%")
             ->get();
-    
+
         // Return the search view with the resluts compacted
         return view('employee/users', compact('users'));
     }
@@ -63,7 +63,7 @@ class UserController extends Controller
         $user-> city=$req->city;
         $user-> address=$req->address;
         $user-> save();
-        return redirect('/');
+        return redirect('/home');
     }
 
     /*class MailSend extends Controller
