@@ -64,7 +64,7 @@ Route::get('delete/{id}',[BookController::class,'delete']);
 Route::get('search1', 'App\Http\Controllers\BookController@search')->name('search1');
 
 Route::view('/new_book','employee/new_book');
-Route::post('new_book',[BookController::class,'addData']);
+Route::post('/new_book',[BookController::class,'addBook']);
 
 Route::get('/book_update', function () {
     return view('employee/book_update');

@@ -26,30 +26,35 @@ class BookController extends Controller
         return redirect('/books');
     }
 
-    function addData(Request $req)
+    function addBook(Request $req)
     {
         $book = new Book;
-        $book-> title=$req->title;
-        $book-> writer=$req->writer;
-        $book-> publisher=$req->publisher;
-        $book-> year=$req->year;
-        $book-> edition=$req->edition;
-        $book-> isbn=$req->isbn;
-        $book-> save();
+        $book->title = $req->title;
+        $book->writer = $req->writer;
+        $book->publisher = $req->publisher;
+        $book->year = $req->year;
+        $book->edition = $req->edition;
+        $book->isbn = $req->isbn;
+        $book->save();
+        $stock = new Stock;
+        $stock->max_number = $req->max_number;
+        $stock->number = $req->max_number;
+        $stock->isbn = $req->isbn;
+        $stock->save();
         return redirect('/books');
     }
 
-    function search1(Request $request){
+    function search1(Request $request)
+    {
         // Get the search value from the request
         $search = $request->input('search1');
-    
+
         // Search in the title and body columns from the posts table
         $books = Book::query()
             ->where('title', 'LIKE', "%{$search}%")
             ->get();
-    
+
         // Return the search view with the resluts compacted
         return view('employee/books', compact('books'));
     }
-
 }
