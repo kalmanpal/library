@@ -20,9 +20,11 @@ class BookController extends Controller
     function delete($id)
     {
         $data = Stock::find($id);
-        $data->delete();
-        $data2 = Book::find($id);
-        $data2->delete();
+        $data->max_number = "0";
+        $data->number = "0";
+        $data->save();
+        // $data2 = Book::find($id);
+        // $data2->delete();
         return redirect('/books');
     }
 
