@@ -14,6 +14,7 @@
     p{
         margin-left: 200px;
         margin-right:200px;
+        text-align: center;
         padding: 10px;
         font-size: 25px;
         color: white;
