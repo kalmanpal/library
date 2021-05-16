@@ -20,6 +20,7 @@ use App\Http\Controllers\StockController;
 
 //----------------------------------------register---------------------------------------------------------
 
+Route::get('/register',[UserController::class,'register']);
 Route::view('/register','authentication/register');
 Route::post('register',[UserController::class,'register']);
 

@@ -204,7 +204,7 @@
 
     <body>
         <div class="main-block">
-            <form action="" method="POST" id="form" form="myForm">
+            <form action="register" method="POST" id="form" form="myForm">
                 @csrf
                 <h1>Adja meg az új felhasználó adatait!</h1>
                 <fieldset>
@@ -223,7 +223,7 @@
                         <div><label>Teljes név*</label><input type="text" name="name" required></div>
                         <div><label>Település*</label><input type="text" name="city" required></div>
                         <div><label>Cím*</label><input type="text" name="address" required></div>
-                        <div><label>Jelszó*</label><input type="password" name="password" required></div>
+                        <div><label>Jelszó*</label><input type="text" name="password" id="passwordrandom" required></div>
                         <div>
                             <label>Hallgatói státusz*</label>
                             <select name="type">
@@ -240,6 +240,21 @@
                 <button type="submit" href="/">Adatok Mentése</button>
             </form>
         </div>
+        <script>   
+                // dec2hex :: Integer -> String
+                // i.e. 0-255 -> '00'-'ff'
+                function dec2hex (dec) {
+                return dec.toString(16).padStart(2, "0")
+                }
+                // generateId :: Integer -> String
+                function generateId (len) {
+                var arr = new Uint8Array((len || 40) / 2)
+                window.crypto.getRandomValues(arr)
+                return Array.from(arr, dec2hex).join('')
+
+                }   
+                document.getElementById("passwordrandom").value = generateId(8);
+        </script>
     </body>
 
     </html>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use App\Mail\MyTestMail;
+use App\Mail\SendMail;
 
 class UserController extends Controller
 {
@@ -36,10 +36,14 @@ class UserController extends Controller
         $user-> name=$req->name;
         $user-> city=$req->city;
         $user-> address=$req->address;
+        $pw=$req->password;
         $user-> password=bcrypt($req->password);
         $user-> type=$req->type;
         $user-> save();
-        return redirect('/');
+
+        //\Mail::to('sonybalck2001@gmail.com')->send(new \App\Mail\SendMail($pw));
+        \Mail::to($req->email)->send(new \App\Mail\SendMail($pw));
+        //return view('emails/thanks',['pw'=>$pw]);
     }
 
     function search(Request $request){
@@ -58,12 +62,20 @@ class UserController extends Controller
     function update(Request $req)
     {
         $user=User::find($req->id);
-        $user-> email=$req->email;
-        $user-> name=$req->name;
-        $user-> city=$req->city;
-        $user-> address=$req->address;
-        $user-> save();
-        return redirect('/home');
+        if(Hash::check($req->password, $user->password)){
+            $user-> email=$req->email;
+            $user-> name=$req->name;
+            $user-> city=$req->city;
+            $user-> address=$req->address;
+            $user-> save();
+            session(['update_message' => 'Az adatok módosítása sikerült']);
+            return redirect('/data_update');
+        }else{
+            session(['update_message' => 'Az adatok módosítása nem sikerült']);
+            return redirect('/data_update');
+            
+        }
+        
     }
 
     /*class MailSend extends Controller

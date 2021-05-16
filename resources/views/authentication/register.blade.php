@@ -2,6 +2,7 @@
 <html>
 
 <head>
+<script   src="https://code.jquery.com/jquery-3.6.0.js"   integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="   crossorigin="anonymous"></script>
     <title>Account registration form</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet'
         type='text/css'>
@@ -211,8 +212,9 @@
                 <div class="account-details">
                     <div><label>Email*</label> <input type="text" name="email" required></div>
                     <div></div>
-                    <div><label>Jelszó*</label> <input type="password" name="password" required></div>
-                    <div><label>Jelszó újra*</label> <input type="password" name="passwordvar" required></div>
+                    <div><label>Jelszó*</label> <input type="password" name="password" id="password" required></div>
+                    <div><label>Jelszó újra*</label> <input type="password" name="passwordvar" id="passwordvar" required></div>
+                    <p style= "margin:0 0; margin-left:auto; margin-right:0;" id="errormessage"></p>
                 </div>
             </fieldset>
             <fieldset>
@@ -253,12 +255,36 @@
                             offers by your site</span>
                     </div>
             </fieldset>
-            <button type="submit" href="/">Regisztráció</button>
+            <button id="regbutton" type="submit" href="/">Regisztráció</button>
             <label>
                 <a href="/"><p style="color: #ffffff"> Már van fiókom, bejelentkezek <p></a>
             </label>
         </form>
     </div>
+
+<!-- Password Match check -->
+<script>
+    $('#password, #passwordvar').on('keyup', function () {
+  if ($('#password').val() == $('#passwordvar').val()) {
+    $('#errormessage').html('Passwords Matching').css('color', 'green');
+    
+  } else 
+    $('#errormessage').html('Passwords Not Matching').css('color', 'red');
+    
+    
+
+  if($('#errormessage').text()=='Passwords Matching'){
+    $('#regbutton').removeAttr('disabled');
+  }else{
+    $('#regbutton').prop("disabled", true);
+  }
+});
+
+
+</script>
+
+
+
 </body>
 
 </html>
