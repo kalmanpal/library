@@ -7,6 +7,8 @@ use App\Models\Reservation;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Book;
+use App\Models\Stock;
+use Carbon\Carbon;
 
 
 class ReservationController extends Controller
@@ -29,5 +31,6 @@ class ReservationController extends Controller
         $data = DB::table('reservations')->join('stocks', 'reservations.isbn', "=", 'stocks.isbn')->join('users','reservations.email', "=", 'users.email')->where('email', '=', Auth::user()->email)->get();
         return view('member/myreservations', ['reservations' => $data]);
     }
+
 
 }
