@@ -39,7 +39,7 @@ Route::get('main/logout', 'App\Http\Controllers\MainController@logout');
 
 Route::get('/book_reservation',[ReservationController::class,'showBooks']);
 Route::get('reserve/{id}',[ReservationController::class,'reserve']);
-Route::get('deleteReservations/{id}',[ReservationController::class,'deleteReservation']);
+
 
 Route::get('/myreservations',[ReservationController::class,'showMyReservations']);
 

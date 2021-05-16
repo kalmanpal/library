@@ -45,12 +45,6 @@ class ReservationController extends Controller
         return redirect('/book_reservation');
     }
 
-    function deleteReservation($id)
-    {
-        $res = Reservation::find($id);
-        $res->delete();
-        return redirect('/myreservations');
-    }
 
 
 }
