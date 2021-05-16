@@ -223,7 +223,7 @@
                         <div><label>Teljes név*</label><input type="text" name="name" required></div>
                         <div><label>Település*</label><input type="text" name="city" required></div>
                         <div><label>Cím*</label><input type="text" name="address" required></div>
-                        <div><label>Jelszó*</label><input type="text" name="password" id="passwordrandom" required></div>
+                        <div><label>Jelszó*</label><input type="password" name="password" id="passwordrandom" required readonly></div>
                         <div>
                             <label>Hallgatói státusz*</label>
                             <select name="type">
@@ -240,7 +240,7 @@
                 <button type="submit" href="/">Adatok Mentése</button>
             </form>
         </div>
-        <script>   
+        <script>
                 // dec2hex :: Integer -> String
                 // i.e. 0-255 -> '00'-'ff'
                 function dec2hex (dec) {
@@ -252,7 +252,7 @@
                 window.crypto.getRandomValues(arr)
                 return Array.from(arr, dec2hex).join('')
 
-                }   
+                }
                 document.getElementById("passwordrandom").value = generateId(8);
         </script>
     </body>

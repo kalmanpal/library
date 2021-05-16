@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\SendMail;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -44,6 +45,8 @@ class UserController extends Controller
         //\Mail::to('sonybalck2001@gmail.com')->send(new \App\Mail\SendMail($pw));
         \Mail::to($req->email)->send(new \App\Mail\SendMail($pw));
         //return view('emails/thanks',['pw'=>$pw]);
+
+        return redirect("/users");
     }
 
     function search(Request $request){
@@ -73,9 +76,9 @@ class UserController extends Controller
         }else{
             session(['update_message' => 'Az adatok módosítása nem sikerült']);
             return redirect('/data_update');
-            
+
         }
-        
+
     }
 
     /*class MailSend extends Controller
