@@ -28,8 +28,28 @@ class ReservationController extends Controller
 
     function showMyReservations()
     {
-        $data = DB::table('reservations')->join('stocks', 'reservations.isbn', "=", 'stocks.isbn')->join('users','reservations.email', "=", 'users.email')->where('email', '=', Auth::user()->email)->get();
+        $data = DB::table('reservations')->join('stocks', 'reservations.isbn', "=", 'stocks.isbn')->join('books', 'stocks.isbn', "=", 'books.isbn')->join('users','reservations.email', "=", 'users.email')->where('reservations.email', '=', Auth::user()->email)->get();
         return view('member/myreservations', ['reservations' => $data]);
+    }
+
+    function reserve($id)
+    {
+        $stock = Stock::find($id);
+        $res = new Reservation;
+        $res->date = date(today());
+        $res->email = Auth::user()->email;
+        $res->isbn = $stock->isbn;
+        $res->save();
+        $stock->number = $stock->number-1;
+        $stock->save();
+        return redirect('/book_reservation');
+    }
+
+    function deleteReservation($id)
+    {
+        $res = Reservation::find($id);
+        $res->delete();
+        return redirect('/myreservations');
     }
 
 

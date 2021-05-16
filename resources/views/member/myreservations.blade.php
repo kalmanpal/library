@@ -141,7 +141,7 @@
                             <td>{{ $item->isbn }}</td>
                             <td>{{ $item->year }}</td>
                             <td>{{ $item->date }}</td>
-                            <td>Törlés</td>
+                            <td><a href="deleteReservations/{{ $item->id }}">Törlés</a></td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -136,6 +136,7 @@
                         <th>Foglalás dátuma</th>
                         <th>ISBN</th>
                         <th>Cím</th>
+                        <th>Művelet</th>
                     </tr>
                 </thead>
             </table>
@@ -149,6 +150,7 @@
                             <td>{{ $item->date }}</td>
                             <td>{{ $item->isbn }}</td>
                             <td>{{ $item->title }}</td>
+                            <td>Kiadás</td>
                         </tr>
                     @endforeach
                 </tbody>

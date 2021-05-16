@@ -151,7 +151,7 @@
                             <td>{{ $book->edition }}</td>
                             <td>{{ $book->number }}</td>
                             <td>{{ $book->max_number }}</td>
-                            <td><a href="delete/{{ $book->id }}">Delete</a></td>
+                            <td><a href="delete/{{ $book->id }}">Törlés</a></td>
                         </tr>
                     @endforeach
                 </tbody>
