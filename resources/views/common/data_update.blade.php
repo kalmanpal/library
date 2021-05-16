@@ -222,7 +222,7 @@
                         </div>
                     </div>
                 </fieldset>
-                <p ><?php echo session('update_message');?></p>
+                <p><?php echo session('update_message');?></p>
                 <button type="submit">Adatok módosítása</button>
             </form>
         </div>

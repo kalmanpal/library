@@ -223,7 +223,7 @@
                         <div><label>Teljes név*</label><input type="text" name="name" required></div>
                         <div><label>Település*</label><input type="text" name="city" required></div>
                         <div><label>Cím*</label><input type="text" name="address" required></div>
-                        <div><label>Jelszó*</label><input type="text" name="password" id="passwordrandom" required></div>
+                        <div><label>Jelszó*</label><input type="password" name="password" id="passwordrandom" required readonly></div>
                         <div>
                             <label>Hallgatói státusz*</label>
                             <select name="type">
