@@ -44,17 +44,18 @@ class BookController extends Controller
         return redirect('/books');
     }
 
-    function search1(Request $request)
-    {
+    function search1(Request $request){
         // Get the search value from the request
-        $search = $request->input('search1');
+        $search1 = $request->input('search1');
 
         // Search in the title and body columns from the posts table
         $books = Book::query()
-            ->where('title', 'LIKE', "%{$search}%")
+            ->where('title', 'LIKE', "%{$search1}%")
             ->get();
 
         // Return the search view with the resluts compacted
         return view('employee/books', compact('books'));
     }
+
+
 }
