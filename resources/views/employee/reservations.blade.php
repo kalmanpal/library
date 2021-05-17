@@ -133,7 +133,7 @@
                 <thead>
                     <tr>
                         <th>Név</th>
-                        <th>Foglalás dátuma</th>
+                        <th>Érvényes eddig</th>
                         <th>ISBN</th>
                         <th>Cím</th>
                         <th>Művelet</th>
@@ -147,7 +147,7 @@
                     @foreach ($reservations as $item)
                         <tr>
                             <td>{{ $item->name }}</td>
-                            <td>{{ $item->date }}</td>
+                            <td>{{ $item->expiry }}</td>
                             <td>{{ $item->isbn }}</td>
                             <td>{{ $item->title }}</td>
                             <td>Kiadás</td>

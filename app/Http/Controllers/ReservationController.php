@@ -36,13 +36,21 @@ class ReservationController extends Controller
     {
         $stock = Stock::find($id);
         $res = new Reservation;
-        $res->date = date(today());
+        $res->date = Carbon::today();
+        $res->expiry = Carbon::tomorrow();
         $res->email = Auth::user()->email;
         $res->isbn = $stock->isbn;
         $res->save();
         $stock->number = $stock->number-1;
         $stock->save();
         return redirect('/book_reservation');
+    }
+
+    function deleteReservation($id)
+    {
+        $data = Reservation::find($id);
+        $data->delete();
+        return redirect('/myreservations');
     }
 
 

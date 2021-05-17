@@ -18,6 +18,7 @@ class CreateReservationsTable extends Migration
             $table->date('date');
             $table->string('email')->references('email')->on('users');
             $table->char('isbn', 13)->references('isbn')->on('stocks');
+            $table->date('expiry');
             $table->timestamps();
         });
     }

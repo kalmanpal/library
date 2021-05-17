@@ -125,7 +125,7 @@
                         <th>Szerző(k)</th>
                         <th>ISBN</th>
                         <th>Kiadás éve</th>
-                        <th>Foglalás időpontja</th>
+                        <th>Érvényes eddig</th>
                         <th>Művelet</th>
                     </tr>
                 </thead>
@@ -140,8 +140,8 @@
                             <td>{{ $item->writer }}</td>
                             <td>{{ $item->isbn }}</td>
                             <td>{{ $item->year }}</td>
-                            <td>{{ $item->date }}</td>
-                            <td>Törlés</td>
+                            <td>{{ $item->expiry }}</td>
+                            <td><a href="deleteRes/{{ $item->id }}">Törlés</a></td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -46,7 +46,7 @@ class UserController extends Controller
         \Mail::to($req->email)->send(new \App\Mail\SendMail($pw));
         //return view('emails/thanks',['pw'=>$pw]);
 
-        return redirect("/users");
+        return redirect("/");
     }
 
     function search(Request $request){
