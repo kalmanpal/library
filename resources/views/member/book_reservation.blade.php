@@ -153,7 +153,7 @@
                             <td>{{ $item->isbn }}</td>
                             <td>{{ $item->year }}</td>
                             <td>{{ $item->edition }}</td>
-                            <td><a href="reserve/{{ $item->id }}">Foglalás</a></td>
+                            <td><a href="reserveBook/{{ $item->id }}">Foglalás</a></td>
                         </tr>
                     @endforeach
                 </tbody>

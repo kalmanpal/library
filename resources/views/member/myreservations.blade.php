@@ -134,7 +134,7 @@
         <div class="tbl-content">
             <table cellpadding="1" cellspacing="1" border="0">
                 <tbody>
-                    @foreach ($reservations as $item)
+                    @foreach ($myreservations as $item)
                         <tr>
                             <td>{{ $item->title }}</td>
                             <td>{{ $item->writer }}</td>

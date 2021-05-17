@@ -142,16 +142,16 @@
         <div class="tbl-content">
             <table cellpadding="1" cellspacing="1" border="0">
                 <tbody>
-                    @foreach ($books as $book)
+                    @foreach ($books as $item)
                         <tr>
-                            <td>{{ $book->title }}</td>
-                            <td>{{ $book->writer }}</td>
-                            <td>{{ $book->isbn }}</td>
-                            <td>{{ $book->year }}</td>
-                            <td>{{ $book->edition }}</td>
-                            <td>{{ $book->number }}</td>
-                            <td>{{ $book->max_number }}</td>
-                            <td><a href="delete/{{ $book->id }}">Törlés</a></td>
+                            <td>{{ $item->title }}</td>
+                            <td>{{ $item->writer }}</td>
+                            <td>{{ $item->isbn }}</td>
+                            <td>{{ $item->year }}</td>
+                            <td>{{ $item->edition }}</td>
+                            <td>{{ $item->number }}</td>
+                            <td>{{ $item->max_number }}</td>
+                            <td><a href="deleteBook/{{ $item->id }}">Törlés</a></td>
                         </tr>
                     @endforeach
                 </tbody>

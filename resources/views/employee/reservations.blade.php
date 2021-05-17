@@ -150,7 +150,7 @@
                             <td>{{ $item->expiry }}</td>
                             <td>{{ $item->isbn }}</td>
                             <td>{{ $item->title }}</td>
-                            <td>Kiadás</td>
+                            <td><a href="rentFromRes/{{ $item->id }}">Kiadás</a></td>
                         </tr>
                     @endforeach
                 </tbody>

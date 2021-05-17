@@ -6,6 +6,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\RentalController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StockController;
+use App\Models\Reservation;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +39,7 @@ Route::get('main/logout', 'App\Http\Controllers\MainController@logout');
 //-------------------------------------------members--------------------------------------------------------
 
 Route::get('/book_reservation',[ReservationController::class,'showBooks']);
-Route::get('reserve/{id}',[ReservationController::class,'reserve']);
+Route::get('reserveBook/{id}',[ReservationController::class,'reserve']);
 Route::get('deleteRes/{id}',[ReservationController::class,'deleteReservation']);
 
 Route::get('/myreservations',[ReservationController::class,'showMyReservations']);
@@ -63,7 +64,7 @@ Route::get('/home', function () {
 //-------------------------------------------employee-------------------------------------------------------
 
 Route::get('books',[BookController::class,'showBooks']);
-Route::get('delete/{id}',[BookController::class,'delete']);
+Route::get('deleteBook/{id}',[BookController::class,'delete']);
 Route::get('search1', 'App\Http\Controllers\BookController@search')->name('search1');
 
 Route::view('/new_book','employee/new_book');
@@ -80,6 +81,7 @@ Route::view('/new_user','employee/new_user');
 Route::post('new_user',[UserController::class,'addData']);
 
 Route::get('/rental',[RentalController::class,'showRentals']);
+Route::get('rentFromRes/{id}',[RentalController::class,'rentFromRes']);
 
 Route::get('/reservations',[ReservationController::class,'showReservations']);
 

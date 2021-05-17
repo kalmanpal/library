@@ -16,20 +16,20 @@ class ReservationController extends Controller
 
     function showReservations()
     {
-        $data = DB::table('reservations')->join('books', 'reservations.isbn', "=", 'books.isbn')->join('users','reservations.email', "=", 'users.email')->get();
+        $data = DB::table('reservations')->join('books', 'reservations.isbn', "=", 'books.isbn')->join('users','reservations.email', "=", 'users.email')->orderBy('reservations.created_at', 'asc')->get();
         return view('employee/reservations', ['reservations' => $data]);
     }
 
     function showBooks()
     {
-        $data = DB::table('books')->join('stocks', 'books.isbn', "=", 'stocks.isbn')->where('number', '>', 0)->get();
+        $data = DB::table('stocks')->join('books', 'stocks.isbn', "=", 'books.isbn')->where('stocks.number', '>', 0)->get();
         return view('member/book_reservation ', ['books' => $data]);
     }
 
     function showMyReservations()
     {
         $data = DB::table('reservations')->join('stocks', 'reservations.isbn', "=", 'stocks.isbn')->join('books', 'stocks.isbn', "=", 'books.isbn')->join('users','reservations.email', "=", 'users.email')->where('reservations.email', '=', Auth::user()->email)->get();
-        return view('member/myreservations', ['reservations' => $data]);
+        return view('member/myreservations', ['myreservations' => $data]);
     }
 
     function reserve($id)
