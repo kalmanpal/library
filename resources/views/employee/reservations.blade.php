@@ -156,11 +156,6 @@
                 </tbody>
             </table>
         </div>
-
-        <div>
-            <button style="margin-top: 50px; margin-left: 100px; background-color: #5c5edc; width: 150px; height: 50px;">
-                <span class="style2" style="color: #FFFFFF">Könyv kiadása</span></button>
-        </div>
     </section>
 
 @endsection

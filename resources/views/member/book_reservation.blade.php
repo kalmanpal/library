@@ -160,9 +160,6 @@
             </table>
         </div>
         <div>
-            <button style="margin-top: 50px; margin-left: 250px; background-color: #5c5edc; width: 150px; height: 50px;">
-                <a>
-                    <span class="style2" style="color: #FFFFFF">Foglalás</a></span></button>
             <button style="margin-top: 50px; margin-left: 500px; background-color: #5c5edc; width: 150px; height: 50px;"> <a
                     href="/myreservations">
                     <span class="style2" style="color: #FFFFFF">Korábbi foglalásaim</span></a></button>

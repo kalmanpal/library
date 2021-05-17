@@ -204,10 +204,9 @@
                         <h3>Fiók információk</h3>
                     </legend>
                     <div class="account-details">
-                        <div><label>Email*</label><input type="text" name="email" value= "{{ Auth::user()->email }}" required></div>
+                        <div><label>Email*</label><input type="text" name="email" value= "{{ Auth::user()->email }}" required readonly></div>
                         <div></div>
                         <div><label>Jelszó*</label><input type="password" name="password"></div>
-                        <div><label>Jelszó újra*</label><input type="password" name="passwordvar"></div>
                     </div>
                 </fieldset>
                 <fieldset>

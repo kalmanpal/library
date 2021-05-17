@@ -156,12 +156,6 @@
                 </tbody>
             </table>
         </div>
-
-        <div>
-            <button style="margin-top: 50px; margin-left: 250px; background-color: #5c5edc; width: 150px; height: 50px;"> <a
-                    class="a">
-                    <span class="style2" style="color: #FFFFFF">Könyv visszavétel</a></span></button>
-        </div>
     </section>
 
 @endsection
