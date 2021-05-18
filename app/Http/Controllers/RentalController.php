@@ -29,7 +29,7 @@ class RentalController extends Controller
         $res = Reservation::find($id);
         $rent = new Rental();
         $rent->out_date = Carbon::today();
-        $rent->deadline = $rent->out_date->addDays(60);
+        $rent->deadline = Carbon::today()->addMonth(2);
 
         // if ($res->type == "EH") {
         //     $rent->deadline = $rent->out_date->addDays(60);
@@ -50,6 +50,7 @@ class RentalController extends Controller
         $rent->isbn = $res->isbn;
         $rent->email = $res->email;
         $rent->save();
+        $res->delete();
         return redirect('/rental');
     }
 }
