@@ -29,23 +29,29 @@ class RentalController extends Controller
         $res = Reservation::find($id);
         $rent = new Rental();
         $rent->out_date = Carbon::today();
-        $rent->deadline = Carbon::today()->addMonth(2);
+        //$rent->deadline = Carbon::today()->addMonth(2);
 
-        // if ($res->type == "EH") {
-        //     $rent->deadline = $rent->out_date->addDays(60);
-        // }else
+        $seged = DB::table('reservations')
+            ->join('users', 'reservations.email', "=", 'users.email')
+            ->get();
 
-        // if ($res->type == "EO") {
-        //     $rent->deadline = $rent->out_date->addDays(365);
-        // }else
+        $type = $seged[0]->type;
 
-        // if ($res->type == "ME") {
-        //     $rent->deadline = $rent->out_date->addDays(30);
-        // }else
+        if ($type == "EH") {
+            $rent->deadline = Carbon::today()->addMonth(2);
+        }else
 
-        // if ($res->type == "E") {
-        //     $rent->deadline = $rent->out_date->addDays(14);
-        // }
+        if ($type == "EO") {
+            $rent->deadline = Carbon::today()->addYear(1);
+        }else
+
+        if ($type == "ME") {
+            $rent->deadline = Carbon::today()->addMonth(1);
+        }else
+
+        if ($type == "E") {
+            $rent->deadline = Carbon::today()->addDays(14);
+        }
 
         $rent->isbn = $res->isbn;
         $rent->email = $res->email;
