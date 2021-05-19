@@ -53,6 +53,7 @@ class ReservationController extends Controller
         $res->save();
         $stock->number = $stock->number - 1;
         $stock->save();
+        session(['foglalas' => 'Foglalás Sikeres!']);
         return redirect('/book_reservation');
     }
 

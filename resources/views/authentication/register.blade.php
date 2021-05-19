@@ -211,7 +211,7 @@
                 </legend>
                 <div class="account-details">
                     <div><label>Email*</label> <input type="text" name="email" required></div>
-                    <div></div>
+                    <div><p style="margin-left:130px; color:red;"><?php echo session('userExistError'); session()->forget('userExistError');?></p></div>
                     <div><label>Jelszó*</label> <input type="password" name="password" id="password" required></div>
                     <div><label>Jelszó újra*</label> <input type="password" name="passwordvar" id="passwordvar" required></div>
                     <p style= "margin:0 0; margin-left:auto; margin-right:0;" id="errormessage"></p>
@@ -279,7 +279,6 @@
     $('#regbutton').prop("disabled", true);
   }
 });
-
 
 </script>
 

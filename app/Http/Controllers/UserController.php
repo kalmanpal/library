@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\SendMail;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Session;
 
 class UserController extends Controller
 {
@@ -32,6 +33,17 @@ class UserController extends Controller
 
     function register(Request $req)
     {
+            # check user if match with database user
+            $users = User::where('email', $req->email)->get();
+
+            # check if email is more than 1
+            if(sizeof($users) > 0){
+                # tell user not to duplicate same email
+                $msg = 'Ez az e-mail már regisztrált!';
+                session(['userExistError' => $msg]);
+                return back();
+            }
+        
         $user = new User;
         $user-> email=$req->email;
         $user-> name=$req->name;

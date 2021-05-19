@@ -120,7 +120,7 @@
         <form  action="{{ route('search1') }}" method="GET">
                     <input style="margin-left: 5px; margin-right: 5px; margin-bottom: 10px; width: 400px; height: 26px;" type="text" name="search" required/>
                     <button style="background-color: #5c5edc; width: 100px; height: 25px;" type="submit"><a
-                    href="/new_user">
+                    href="/books">
                     <span class="style2" style="color: #FFFFFF">Keresés</a></span></button>
         </form>
         <div class="tbl-header">

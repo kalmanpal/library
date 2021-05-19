@@ -155,6 +155,7 @@
                             <td>{{ $item->edition }}</td>
                             <td><a href="reserveBook/{{ $item->id }}">Foglalás</a></td>
                         </tr>
+
                     @endforeach
                 </tbody>
             </table>
@@ -165,5 +166,11 @@
                     <span class="style2" style="color: #FFFFFF">Korábbi foglalásaim</span></a></button>
         </div>
     </section>
-
+    <?php 
+    //session(['foglalas' => 'Foglalás Sikeres!']);
+    if(session()->has('foglalas')){
+        echo "<script>alert('".session('foglalas')."');</script>";
+        session()->forget('foglalas');
+    }
+    ?>
 @endsection
