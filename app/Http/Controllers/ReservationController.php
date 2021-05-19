@@ -19,6 +19,7 @@ class ReservationController extends Controller
         $data = DB::table('reservations')
             ->join('books', 'reservations.isbn', "=", 'books.isbn')
             ->join('users', 'reservations.email', "=", 'users.email')
+            ->select('title', 'name', 'reservations.isbn', 'expiry', 'reservations.id')
             ->orderBy('reservations.created_at', 'asc')->get();
         return view('employee/reservations', ['reservations' => $data]);
     }
