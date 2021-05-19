@@ -150,7 +150,11 @@
                             <td>{{ $item->out_date }}</td>
                             <td>{{ $item->deadline }}</td>
                             <td>{{ $item->isbn }}</td>
-                            <td>Visszavétel</td>
+                            @if (!!$item->in_date)
+                                <td>Visszahozva</td>
+                            @else
+                                <td><a href="bookIsBack/{{ $item->id }}">Visszavétel</a></td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>
