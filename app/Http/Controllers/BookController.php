@@ -20,10 +20,17 @@ class BookController extends Controller
     function delete($id)
     {
         $data = Stock::find($id);
-        $data->max_number = "0";
-        $data->number = "0";
-        $data->save();
-        return redirect('/books');
+        if($data->number == $data->max_number)
+        {
+            $data->max_number = "0";
+            $data->number = "0";
+            $data->save();
+        }
+        else
+        {
+            dd("kikolcsonzott konyvet nem lehet torolni");
+        }
+            return redirect('/books');
     }
 
     function addBook(Request $req)
