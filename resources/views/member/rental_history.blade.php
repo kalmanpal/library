@@ -140,7 +140,7 @@
                             @if (!!$item->in_date)
                                 <td>{{ $item->in_date }}</td>
                             @else
-                                <td>Még nálad van</td>
+                                <td style="color: orange">Még nálad van</td>
                             @endif
 
                         </tr>

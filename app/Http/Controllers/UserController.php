@@ -43,7 +43,7 @@ class UserController extends Controller
                 session(['userExistError' => $msg]);
                 return back();
             }
-        
+
         $user = new User;
         $user-> email=$req->email;
         $user-> name=$req->name;
