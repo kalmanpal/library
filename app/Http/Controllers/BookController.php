@@ -28,7 +28,7 @@ class BookController extends Controller
         }
         else
         {
-            dd("kikolcsonzott konyvet nem lehet torolni");
+            session(['deletebook' => 'Kikölcsönzött könyvet nem lehet törölni!']);
         }
             return redirect('/books');
     }
