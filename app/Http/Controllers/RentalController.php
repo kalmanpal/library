@@ -23,6 +23,8 @@ class RentalController extends Controller
         return view('employee/rental', ['rentals' => $data]);
     }
 
+//----------------------------------------------------------------------------------------------------------------------------------
+
     function showMyRentals()
     {
         $data = DB::table('rentals')
@@ -33,6 +35,8 @@ class RentalController extends Controller
             ->get();
         return view('member/rental_history', ['rentals' => $data]);
     }
+
+//----------------------------------------------------------------------------------------------------------------------------------
 
     function rentFromRes($id)
     {
@@ -70,13 +74,25 @@ class RentalController extends Controller
         return redirect('/rental');
     }
 
-
+//----------------------------------------------------------------------------------------------------------------------------------
 
     function bookBack($id)
     {
         $rent = Rental::find($id);
         $rent->in_date = Carbon::today();
+        $email = $rent->email;
         $rent->save();
+
+        $user = DB::table('users')
+            ->where('users.email', "=", $email)
+            ->get();
+
+        $current = $user[0]->current;
+        $max = $user[0]->max;
+
+        $userToSave = DB::table('users')
+            ->where('users.email', $email)
+            ->update(['current' => $current - 1]);
 
         $seged = DB::table('stocks')
             ->join('rentals', 'stocks.isbn', "=", 'rentals.isbn')
@@ -90,8 +106,5 @@ class RentalController extends Controller
             ->update(['number' => $number + 1]);
 
         return redirect('/rental');
-
     }
-
-
 }

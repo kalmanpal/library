@@ -25,6 +25,8 @@ class ReservationController extends Controller
         return view('employee/reservations', ['reservations' => $data]);
     }
 
+//---------------------------------------------------------------------------------------------------------------------------------
+
     function showBooks()
     {
         $data = DB::table('stocks')->join('books', 'stocks.isbn', "=", 'books.isbn')
@@ -33,6 +35,8 @@ class ReservationController extends Controller
             ->get();
         return view('member/book_reservation ', ['books' => $data]);
     }
+
+//---------------------------------------------------------------------------------------------------------------------------------
 
     function showMyReservations()
     {
@@ -47,24 +51,52 @@ class ReservationController extends Controller
         return view('member/myreservations', ['myreservations' => $data]);
     }
 
+//---------------------------------------------------------------------------------------------------------------------------------
+
     function reserve($id)
     {
+        $user = DB::table('users')
+            ->where('users.email', "=", Auth::user()->email)
+            ->get();
+
+        $current = $user[0]->current;
+        $max = $user[0]->max;
+
         $stock = Stock::find($id);
         $res = new Reservation;
         $res->date = Carbon::today();
         $res->expiry = Carbon::tomorrow();
         $res->email = Auth::user()->email;
         $res->isbn = $stock->isbn;
-        $res->save();
-        $stock->number = $stock->number - 1;
-        $stock->save();
-        session(['foglalas' => 'Foglalás Sikeres!']);
+        if ($current < $max) {
+            $res->save();
+
+            $userToSave = DB::table('users')
+                ->where('users.email', Auth::user()->email)
+                ->update(['current' => $current + 1]);
+
+            $stock->number = $stock->number - 1;
+            $stock->save();
+            session(['foglalas' => 'Foglalás Sikeres!']);
+        } else {
+            dd("Egyszerre nem foglalhatsz, vagy kölcsönözhetsz ennyi könyvet!");
+        }
+
         return redirect('/book_reservation');
     }
+
+//---------------------------------------------------------------------------------------------------------------------------------
 
     function deleteReservation($id)
     {
         $res = Reservation::find($id);
+
+        $user = DB::table('users')
+            ->where('users.email', "=", Auth::user()->email)
+            ->get();
+
+        $current = $user[0]->current;
+        $max = $user[0]->max;
 
         $seged = DB::table('stocks')
             ->join('reservations', 'stocks.isbn', "=", 'reservations.isbn')
@@ -76,6 +108,10 @@ class ReservationController extends Controller
         $stock = DB::table('stocks')
             ->where('stocks.isbn', $res->isbn)
             ->update(['number' => $number + 1]);
+
+        $userToSave = DB::table('users')
+            ->where('users.email', Auth::user()->email)
+            ->update(['current' => $current - 1]);
 
         $res->delete();
         return redirect('/myreservations');
