@@ -20,14 +20,17 @@ class ReservationController extends Controller
             ->join('books', 'reservations.isbn', "=", 'books.isbn')
             ->join('users', 'reservations.email', "=", 'users.email')
             ->select('title', 'name', 'reservations.isbn', 'expiry', 'reservations.id')
-            ->orderBy('reservations.created_at', 'asc')->get();
+            ->orderBy('reservations.expiry', 'asc')
+            ->get();
         return view('employee/reservations', ['reservations' => $data]);
     }
 
     function showBooks()
     {
         $data = DB::table('stocks')->join('books', 'stocks.isbn', "=", 'books.isbn')
-            ->where('stocks.number', '>', 0)->get();
+            ->where('stocks.number', '>', 0)
+            ->orderBy('title', 'asc')
+            ->get();
         return view('member/book_reservation ', ['books' => $data]);
     }
 
@@ -39,6 +42,7 @@ class ReservationController extends Controller
             ->join('users', 'reservations.email', "=", 'users.email')
             ->where('reservations.email', '=', Auth::user()->email)
             ->select('title', 'writer', 'reservations.isbn', 'year', 'expiry', 'reservations.id')
+            ->orderBy('expiry', 'asc')
             ->get();
         return view('member/myreservations', ['myreservations' => $data]);
     }

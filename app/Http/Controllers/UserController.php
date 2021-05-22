@@ -8,13 +8,16 @@ use Illuminate\Support\Facades\Hash;
 use App\Mail\SendMail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Session;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
 
     function show()
     {
-        $data= User::all();
+        $data= DB::table('users')
+        ->orderBy('name', 'asc')
+        ->get();
         return view('employee/users',['users'=>$data]);
     }
 

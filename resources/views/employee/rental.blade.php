@@ -151,7 +151,7 @@
                             <td>{{ $item->deadline }}</td>
                             <td>{{ $item->isbn }}</td>
                             @if (!!$item->in_date)
-                                <td>Visszahozva</td>
+                                <td style="color:green">Visszahozva</td>
                             @else
                                 <td><a href="bookIsBack/{{ $item->id }}">Visszavétel</a></td>
                             @endif

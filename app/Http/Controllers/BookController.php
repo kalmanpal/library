@@ -12,7 +12,9 @@ class BookController extends Controller
 
     function showBooks()
     {
-        $data = DB::table('books')->join('stocks', 'books.isbn', "=", 'stocks.isbn')->get();
+        $data = DB::table('books')->join('stocks', 'books.isbn', "=", 'stocks.isbn')
+        ->orderBy('title', 'asc')
+        ->get();
         return view('employee/books', ['books' => $data]);
     }
 

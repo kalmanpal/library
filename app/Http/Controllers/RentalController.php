@@ -18,7 +18,7 @@ class RentalController extends Controller
             ->join('stocks', 'rentals.isbn', "=", 'stocks.isbn')
             ->join('users', 'rentals.email', "=", 'users.email')
             ->select('name', 'out_date', 'rentals.isbn', 'deadline', 'rentals.id', 'in_date')
-            ->orderBy('rentals.deadline', 'desc')
+            ->orderBy('rentals.in_date', 'asc')
             ->get();
         return view('employee/rental', ['rentals' => $data]);
     }
@@ -29,6 +29,7 @@ class RentalController extends Controller
             ->join('stocks', 'rentals.isbn', "=", 'stocks.isbn')
             ->join('books', 'stocks.isbn', "=", 'books.isbn')
             ->where('email', '=', Auth::user()->email)
+            ->orderBy('in_date', 'asc')
             ->get();
         return view('member/rental_history', ['rentals' => $data]);
     }
