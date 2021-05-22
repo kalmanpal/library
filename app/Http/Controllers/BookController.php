@@ -28,6 +28,18 @@ class BookController extends Controller
 
     function addBook(Request $req)
     {
+         # check user if match with database user
+         $books = Book::where('isbn', $req->isbn)->get();
+
+         # check if email is more than 1
+         if(sizeof($books) > 0){
+             # tell user not to duplicate same email
+             $msg = 'Ezzel az isbn-el van már könyv felvéve';
+             session(['isbnExistError' => $msg]);
+             return back();
+         }
+
+
         $book = new Book;
         $book->title = $req->title;
         $book->writer = $req->writer;
@@ -50,6 +62,7 @@ class BookController extends Controller
 
         // Search in the title and body columns from the posts table
         $books = Book::query()
+            ->join('stocks', 'books.isbn', "=", 'stocks.isbn')
             ->where('title', 'LIKE', "%{$search1}%")
             ->get();
 

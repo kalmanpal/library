@@ -118,7 +118,7 @@
         <!--for demo wrap-->
         <h1>Könyvek</h1>
         <form  action="{{ route('search1') }}" method="GET">
-                    <input style="margin-left: 5px; margin-right: 5px; margin-bottom: 10px; width: 400px; height: 26px;" type="text" name="search" required/>
+                    <input autocomplete="off" style="margin-left: 5px; margin-right: 5px; margin-bottom: 10px; width: 400px; height: 26px;" type="text" name="search" required/>
                     <button style="background-color: #5c5edc; width: 100px; height: 25px;" type="submit"><a
                     href="/books">
                     <span class="style2" style="color: #FFFFFF">Keresés</a></span></button>
@@ -151,7 +151,7 @@
                             <td>{{ $item->edition }}</td>
                             <td>{{ $item->number }}</td>
                             <td>{{ $item->max_number }}</td>
-                            <td><a href="deleteBook/{{ $item->id }}">Törlés</a></td>
+                            <td><a onclick="return confirm('Biztosan törölni akarja?');" href="deleteBook/{{ $item->id }}">Törlés</a></td>
                         </tr>
                     @endforeach
                 </tbody>

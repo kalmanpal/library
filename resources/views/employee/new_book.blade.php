@@ -216,6 +216,7 @@
                         <div><label>Kiadás éve*</label> <input type="text" name="year" required></div>
                         <div><label>Kiadás*</label> <input type="text" name="edition" required></div>
                         <div><label>ISBN*</label> <input type="text" name="isbn" required></div>
+                        <div><p style="margin-left:100px; color:red;"><?php echo session('isbnExistError'); session()->forget('isbnExistError');?></p></div>
                     </div>
                 </fieldset>
                 <fieldset>
