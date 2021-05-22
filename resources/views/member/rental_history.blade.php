@@ -137,7 +137,12 @@
                             <td>{{ $item->out_date }}</td>
                             <td>{{ $item->title }}</td>
                             <td>{{ $item->deadline }}</td>
-                            <td>{{ $item->in_date }}</td>
+                            @if (!!$item->in_date)
+                                <td>{{ $item->in_date }}</td>
+                            @else
+                                <td style="color: orange">Még nálad van</td>
+                            @endif
+
                         </tr>
                     @endforeach
             </tbody>

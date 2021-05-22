@@ -152,11 +152,11 @@
                 <tbody>
                     @foreach ($users as $user)
                         <tr>
-                            <td>{{ $user['name'] }}</td>
-                            <td>{{ $user['email'] }}</td>
-                            <td>{{ $user['city'] }}</td>
-                            <td>{{ $user['address'] }}</td>
-                            <td>{{ $user['type'] }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->city }}</td>
+                            <td>{{ $user->address }}</td>
+                            <td>{{ $user->type }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -169,5 +169,12 @@
                     <span class="style2" style="color: #FFFFFF">Új felhasználó</a></span></button>
         </div>
     </section>
+
+    <?php
+    if(session()->has('newuser')){
+        echo "<script>alert('".session('newuser')."');</script>";
+        session()->forget('newuser');
+    }
+    ?>
 
 @endsection

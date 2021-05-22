@@ -7,9 +7,8 @@
 <body>
 	<div class="container">
 		<div class="alert alert-success" role="alert">
-			<h1>LIBRARY PASSWORD</h1>
-			<p>Your password is: {{ $pw }}</p>
-			<p>Thank you</p>
+			<p><strong>Üdv a 20% könyvtárban!</strong></p>
+			<p>A jelszavad: {{ $pw }}</p>
 		</div>
 	 </div>
 </body>

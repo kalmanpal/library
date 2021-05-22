@@ -18,10 +18,12 @@ class RentalController extends Controller
             ->join('stocks', 'rentals.isbn', "=", 'stocks.isbn')
             ->join('users', 'rentals.email', "=", 'users.email')
             ->select('name', 'out_date', 'rentals.isbn', 'deadline', 'rentals.id', 'in_date')
-            ->orderBy('rentals.deadline', 'desc')
+            ->orderBy('rentals.in_date', 'asc')
             ->get();
         return view('employee/rental', ['rentals' => $data]);
     }
+
+//----------------------------------------------------------------------------------------------------------------------------------
 
     function showMyRentals()
     {
@@ -29,9 +31,12 @@ class RentalController extends Controller
             ->join('stocks', 'rentals.isbn', "=", 'stocks.isbn')
             ->join('books', 'stocks.isbn', "=", 'books.isbn')
             ->where('email', '=', Auth::user()->email)
+            ->orderBy('in_date', 'asc')
             ->get();
         return view('member/rental_history', ['rentals' => $data]);
     }
+
+//----------------------------------------------------------------------------------------------------------------------------------
 
     function rentFromRes($id)
     {
@@ -66,16 +71,31 @@ class RentalController extends Controller
         $rent->email = $res->email;
         $rent->save();
         $res->delete();
+
+        session(['rentfromres' => 'A könyv kikölcsönözve!']);
+
         return redirect('/rental');
     }
 
-
+//----------------------------------------------------------------------------------------------------------------------------------
 
     function bookBack($id)
     {
         $rent = Rental::find($id);
         $rent->in_date = Carbon::today();
+        $email = $rent->email;
         $rent->save();
+
+        $user = DB::table('users')
+            ->where('users.email', "=", $email)
+            ->get();
+
+        $current = $user[0]->current;
+        $max = $user[0]->max;
+
+        $userToSave = DB::table('users')
+            ->where('users.email', $email)
+            ->update(['current' => $current - 1]);
 
         $seged = DB::table('stocks')
             ->join('rentals', 'stocks.isbn', "=", 'rentals.isbn')
@@ -88,9 +108,8 @@ class RentalController extends Controller
             ->where('stocks.isbn', $rent->isbn)
             ->update(['number' => $number + 1]);
 
+        session(['bookback' => 'A könyv visszahozva!']);
+
         return redirect('/rental');
-
     }
-
-
 }

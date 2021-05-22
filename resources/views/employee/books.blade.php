@@ -164,5 +164,16 @@
                     <span class="style2" style="color: #FFFFFF">Új könyv</span></a></button>
         </div>
     </section>
-
+    <?php
+    if(session()->has('deletebook')){
+        echo "<script>alert('".session('deletebook')."');</script>";
+        session()->forget('deletebook');
+    }
+    ?>
+    <?php
+    if(session()->has('newbook')){
+        echo "<script>alert('".session('newbook')."');</script>";
+        session()->forget('newbook');
+    }
+    ?>
 @endsection

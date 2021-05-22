@@ -12,7 +12,9 @@ class BookController extends Controller
 
     function showBooks()
     {
-        $data = DB::table('books')->join('stocks', 'books.isbn', "=", 'stocks.isbn')->get();
+        $data = DB::table('books')->join('stocks', 'books.isbn', "=", 'stocks.isbn')
+        ->orderBy('title', 'asc')
+        ->get();
         return view('employee/books', ['books' => $data]);
     }
 
@@ -20,10 +22,18 @@ class BookController extends Controller
     function delete($id)
     {
         $data = Stock::find($id);
-        $data->max_number = "0";
-        $data->number = "0";
-        $data->save();
-        return redirect('/books');
+        if($data->number == $data->max_number)
+        {
+            $data->max_number = "0";
+            $data->number = "0";
+            $data->save();
+            session(['deletebook' => 'Sikeres törlés!']);
+        }
+        else
+        {
+            session(['deletebook' => 'Kikölcsönzött könyvet nem lehet törölni!']);
+        }
+            return redirect('/books');
     }
 
     function addBook(Request $req)
@@ -53,6 +63,9 @@ class BookController extends Controller
         $stock->number = $req->max_number;
         $stock->isbn = $req->isbn;
         $stock->save();
+
+        session(['newbook' => 'A könyv bekerült a rendszerbe!']);
+
         return redirect('/books');
     }
 

@@ -154,4 +154,11 @@
         </div>
     </section>
 
+    <?php
+    if(session()->has('deleteres')){
+        echo "<script>alert('".session('deleteres')."');</script>";
+        session()->forget('deleteres');
+    }
+    ?>
+
 @endsection

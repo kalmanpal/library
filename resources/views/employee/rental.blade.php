@@ -151,7 +151,7 @@
                             <td>{{ $item->deadline }}</td>
                             <td>{{ $item->isbn }}</td>
                             @if (!!$item->in_date)
-                                <td>Visszahozva</td>
+                                <td style="color:green">Visszahozva</td>
                             @else
                                 <td><a href="bookIsBack/{{ $item->id }}">Visszavétel</a></td>
                             @endif
@@ -161,5 +161,18 @@
             </table>
         </div>
     </section>
+
+    <?php
+    if(session()->has('rentfromres')){
+        echo "<script>alert('".session('rentfromres')."');</script>";
+        session()->forget('rentfromres');
+    }
+    ?>
+    <?php
+    if(session()->has('bookback')){
+        echo "<script>alert('".session('bookback')."');</script>";
+        session()->forget('bookback');
+    }
+    ?>
 
 @endsection

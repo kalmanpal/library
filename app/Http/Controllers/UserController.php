@@ -8,13 +8,16 @@ use Illuminate\Support\Facades\Hash;
 use App\Mail\SendMail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Session;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
 
     function show()
     {
-        $data= User::all();
+        $data= DB::table('users')
+        ->orderBy('name', 'asc')
+        ->get();
         return view('employee/users',['users'=>$data]);
     }
 
@@ -43,7 +46,7 @@ class UserController extends Controller
                 session(['userExistError' => $msg]);
                 return back();
             }
-        
+
         $user = new User;
         $user-> email=$req->email;
         $user-> name=$req->name;
@@ -52,6 +55,23 @@ class UserController extends Controller
         $pw=$req->password;
         $user-> password=bcrypt($req->password);
         $user-> type=$req->type;
+        if($req->type === "EH")
+        {
+            $user->max = 5;
+        }else
+        if($req->type === "EO")
+        {
+            $user->max = 250;
+        }else
+        if($req->type === "ME")
+        {
+            $user->max = 4;
+        }else
+        if($req->type === "E")
+        {
+            $user->max = 2;
+        }
+        $user->current = 0;
         $user-> save();
 
         //\Mail::to('sonybalck2001@gmail.com')->send(new \App\Mail\SendMail($pw));
@@ -83,10 +103,10 @@ class UserController extends Controller
             $user-> city=$req->city;
             $user-> address=$req->address;
             $user-> save();
-            session(['update_message' => 'Az adatok módosítása sikerült']);
+            session(['updatedata' => 'Az adatok módosítása sikerült!']);
             return redirect('/data_update');
         }else{
-            session(['update_message' => 'Az adatok módosítása nem sikerült']);
+            session(['updatedata' => 'Az adatok módosítása nem sikerült, ellenőrizze, hogy a megfelelő jelszót írta be!']);
             return redirect('/data_update');
 
         }

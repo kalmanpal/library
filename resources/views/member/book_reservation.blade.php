@@ -166,11 +166,10 @@
                     <span class="style2" style="color: #FFFFFF">Korábbi foglalásaim</span></a></button>
         </div>
     </section>
-    <?php 
-    //session(['foglalas' => 'Foglalás Sikeres!']);
-    if(session()->has('foglalas')){
-        echo "<script>alert('".session('foglalas')."');</script>";
-        session()->forget('foglalas');
+    <?php
+    if(session()->has('res')){
+        echo "<script>alert('".session('res')."');</script>";
+        session()->forget('res');
     }
     ?>
 @endsection

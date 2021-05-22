@@ -197,7 +197,7 @@
         <div class="main-block">
             <form action="/edit" method="POST" id="form" form="myForm">
             @csrf
-                <input type="hidden" name="id" value= "{{ Auth::user()->id }}"> 
+                <input type="hidden" name="id" value= "{{ Auth::user()->id }}">
                 <h1>Saját fiók</h1>
                 <fieldset>
                     <legend>
@@ -221,15 +221,19 @@
                         </div>
                     </div>
                 </fieldset>
-                <p><?php 
-                echo session('update_message');
-                session()->forget('update_message');
-                ?></p>
+
                 <button type="submit">Adatok módosítása</button>
             </form>
         </div>
     </body>
 
     </html>
+
+    <?php
+    if(session()->has('updatedata')){
+        echo "<script>alert('".session('updatedata')."');</script>";
+        session()->forget('updatedata');
+    }
+    ?>
 
 @endsection
