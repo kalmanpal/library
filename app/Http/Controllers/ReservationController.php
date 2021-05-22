@@ -77,9 +77,9 @@ class ReservationController extends Controller
 
             $stock->number = $stock->number - 1;
             $stock->save();
-            session(['foglalas' => 'Foglalás Sikeres!']);
+            session(['res' => 'Foglalás Sikeres!']);
         } else {
-            dd("Egyszerre nem foglalhatsz, vagy kölcsönözhetsz ennyi könyvet!");
+            session(['res' => 'Egyszerre nem foglalhatsz, vagy kölcsönözhetsz több könyvet!']);
         }
 
         return redirect('/book_reservation');
@@ -114,6 +114,9 @@ class ReservationController extends Controller
             ->update(['current' => $current - 1]);
 
         $res->delete();
+
+        session(['deleteres' => 'Foglalás törölve!']);
+
         return redirect('/myreservations');
     }
 }
