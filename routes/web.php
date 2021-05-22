@@ -89,3 +89,6 @@ Route::get('/reservations',[ReservationController::class,'showReservations']);
 //--------------------------------------------------------tests------------------------------------------------------
 
 Route::get('/test', [StockController::class, 'showBooks']);
+
+
+Route::get('/kiadas',[UserController::class,'kiadas']);

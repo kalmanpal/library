@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Stock;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Http\Controllers\UserController;
 
 class BookController extends Controller
 {
@@ -17,7 +19,6 @@ class BookController extends Controller
         ->get();
         return view('employee/books', ['books' => $data]);
     }
-
 
     function delete($id)
     {
@@ -75,13 +76,11 @@ class BookController extends Controller
 
         // Search in the title and body columns from the posts table
         $books = Book::query()
-            ->join('stocks', 'books.isbn', "=", 'stocks.isbn')
             ->where('title', 'LIKE', "%{$search1}%")
             ->get();
 
         // Return the search view with the resluts compacted
         return view('employee/books', compact('books'));
     }
-
 
 }

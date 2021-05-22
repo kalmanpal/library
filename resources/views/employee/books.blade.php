@@ -117,12 +117,23 @@
     <section>
         <!--for demo wrap-->
         <h1>Könyvek</h1>
+        <div style="display: flex;">
         <form  action="{{ route('search1') }}" method="GET">
                     <input autocomplete="off" style="margin-left: 5px; margin-right: 5px; margin-bottom: 10px; width: 400px; height: 26px;" type="text" name="search" required/>
                     <button style="background-color: #5c5edc; width: 100px; height: 25px;" type="submit"><a
                     href="/books">
-                    <span class="style2" style="color: #FFFFFF">Keresés</a></span></button>
+                    <span style="color: #FFFFFF">Keresés</a></span></button>
         </form>
+        
+
+        <form  action="kiadas" method="GET" style="margin-left:auto; margin-right: 0;">
+                    <input autocomplete="off" name="email" style="margin-left: 5px; margin-right: 5px; margin-bottom: 10px; width: 400px; height: 26px;" type="text" required/>
+                    <button style="background-color: #5c5edc; width: 100px; height: 25px;" type="submit"><a href="/books">
+                    <span style="color: #FFFFFF">proba kiadas</a></span></button>
+        </form>
+        </div>
+        <div><p style="text-align: right; margin-left:auto; margin-bottom:5px; margin-right:0px; color:red; margin-top:0px;"><?php echo session('userNotexistError'); session()->forget('userNotexistError');?></p></div>
+
         <div class="tbl-header">
             <table id="example" cellpadding="0" cellspacing="0" border="0">
                 <thead>

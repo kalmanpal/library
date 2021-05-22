@@ -113,4 +113,24 @@ class UserController extends Controller
 
     }
     
+    function kiadas(Request $req)
+    {
+        # check user if match with database user
+        $users = User::where('email', $req->email)->get();
+
+        # check if email is more than 1
+        if(sizeof($users) > 0){
+            # tell user not to duplicate same email
+            $msg = 'Siker';
+            session(['userNotexistError' => $msg]);
+            return back();
+        }
+        else{
+            $msg = 'Ilyen email-el meg nincs felh regelve';
+            session(['userNotexistError' => $msg]);
+            return back();
+        }
+
+    }
+
 }
