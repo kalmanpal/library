@@ -27,6 +27,7 @@ class BookController extends Controller
             $data->max_number = "0";
             $data->number = "0";
             $data->save();
+            session(['deletebook' => 'Sikeres törlés!']);
         }
         else
         {
@@ -50,6 +51,9 @@ class BookController extends Controller
         $stock->number = $req->max_number;
         $stock->isbn = $req->isbn;
         $stock->save();
+
+        session(['newbook' => 'A könyv bekerült a rendszerbe!']);
+
         return redirect('/books');
     }
 

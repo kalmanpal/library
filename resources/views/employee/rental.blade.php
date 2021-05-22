@@ -162,4 +162,17 @@
         </div>
     </section>
 
+    <?php
+    if(session()->has('rentfromres')){
+        echo "<script>alert('".session('rentfromres')."');</script>";
+        session()->forget('rentfromres');
+    }
+    ?>
+    <?php
+    if(session()->has('bookback')){
+        echo "<script>alert('".session('bookback')."');</script>";
+        session()->forget('bookback');
+    }
+    ?>
+
 @endsection

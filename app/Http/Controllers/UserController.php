@@ -103,10 +103,10 @@ class UserController extends Controller
             $user-> city=$req->city;
             $user-> address=$req->address;
             $user-> save();
-            session(['update_message' => 'Az adatok módosítása sikerült']);
+            session(['updatedata' => 'Az adatok módosítása sikerült!']);
             return redirect('/data_update');
         }else{
-            session(['update_message' => 'Az adatok módosítása nem sikerült']);
+            session(['updatedata' => 'Az adatok módosítása nem sikerült, ellenőrizze, hogy a megfelelő jelszót írta be!']);
             return redirect('/data_update');
 
         }

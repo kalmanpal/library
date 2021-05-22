@@ -71,6 +71,9 @@ class RentalController extends Controller
         $rent->email = $res->email;
         $rent->save();
         $res->delete();
+
+        session(['rentfromres' => 'A könyv kikölcsönözve!']);
+
         return redirect('/rental');
     }
 
@@ -104,6 +107,8 @@ class RentalController extends Controller
         $stock = DB::table('stocks')
             ->where('stocks.isbn', $rent->isbn)
             ->update(['number' => $number + 1]);
+
+        session(['bookback' => 'A könyv visszahozva!']);
 
         return redirect('/rental');
     }

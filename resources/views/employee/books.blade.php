@@ -170,4 +170,10 @@
         session()->forget('deletebook');
     }
     ?>
+    <?php
+    if(session()->has('newbook')){
+        echo "<script>alert('".session('newbook')."');</script>";
+        session()->forget('newbook');
+    }
+    ?>
 @endsection

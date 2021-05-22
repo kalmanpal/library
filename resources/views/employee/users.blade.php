@@ -170,4 +170,11 @@
         </div>
     </section>
 
+    <?php
+    if(session()->has('newuser')){
+        echo "<script>alert('".session('newuser')."');</script>";
+        session()->forget('newuser');
+    }
+    ?>
+
 @endsection
