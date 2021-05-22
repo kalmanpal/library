@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('city');
             $table->string('address');
             $table->set('type', ['EH', 'EO', 'ME', 'E', 'D']);
-            $table->integer('max');
-            $table->integer('current')->default('0');
+            $table->integer('max')->nullable();
+            $table->integer('current')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

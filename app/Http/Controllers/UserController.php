@@ -55,6 +55,23 @@ class UserController extends Controller
         $pw=$req->password;
         $user-> password=bcrypt($req->password);
         $user-> type=$req->type;
+        if($req->type === "EH")
+        {
+            $user->max = 5;
+        }else
+        if($req->type === "EO")
+        {
+            $user->max = 250;
+        }else
+        if($req->type === "ME")
+        {
+            $user->max = 4;
+        }else
+        if($req->type === "E")
+        {
+            $user->max = 2;
+        }
+        $user->current = 0;
         $user-> save();
 
         //\Mail::to('sonybalck2001@gmail.com')->send(new \App\Mail\SendMail($pw));
