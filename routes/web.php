@@ -46,6 +46,9 @@ Route::get('/myreservations',[ReservationController::class,'showMyReservations']
 
 Route::get('/myhistory',[RentalController::class,'showMyRentals']);
 
+Route::get('search2', 'App\Http\Controllers\BookController@search2')->name('search2');
+
+
 //----------------------------------------------------------------------------------------------------------
 
 //-------------------------------------------common---------------------------------------------------------

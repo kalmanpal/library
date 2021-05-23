@@ -129,6 +129,14 @@
     <section>
         <!--for demo wrap-->
         <h1>Elérhető könyvek</h1>
+        <div style="display: flex;">
+        <form  action="{{ route('search2') }}" method="GET">
+                    <input autocomplete="off" style="margin-left: 5px; margin-right: 5px; margin-bottom: 10px; width: 400px; height: 26px;" type="text" name="search2" required/>
+                    <button style="background-color: #5c5edc; width: 100px; height: 25px;" type="submit"><a
+                    href="/book_reservation">
+                    <span style="color: #FFFFFF">Keresés</a></span></button>
+        </form>
+        </div>
         <div class="tbl-header">
             <table cellpadding="0" cellspacing="0" border="0">
                 <thead>

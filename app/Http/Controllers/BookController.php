@@ -84,4 +84,18 @@ class BookController extends Controller
         return view('employee/books', compact('books'));
     }
 
+    function search2(Request $request){
+        // Get the search value from the request
+        $search2 = $request->input('search2');
+
+        // Search in the title and body columns from the posts table
+        $books = Book::query()
+            ->where('title', 'LIKE', "%{$search2}%")
+            ->join('stocks', 'books.isbn', "=", 'stocks.isbn')
+            ->get();
+
+        // Return the search view with the resluts compacted
+        return view('member/book_reservation', compact('books'));
+    }
+
 }
