@@ -124,7 +124,7 @@
                     href="/books">
                     <span style="color: #FFFFFF">Keresés</a></span></button>
         </form>
-        
+
 
         <form  action="kiadas" method="GET" style="margin-left:auto; margin-right: 0;">
                     <input autocomplete="off" name="email" style="margin-left: 5px; margin-right: 5px; margin-bottom: 10px; width: 400px; height: 26px;" type="text" required/>
@@ -162,7 +162,10 @@
                             <td>{{ $item->edition }}</td>
                             <td>{{ $item->number }}</td>
                             <td>{{ $item->max_number }}</td>
-                            <td><a onclick="return confirm('Biztosan törölni akarja?');" href="deleteBook/{{ $item->id }}">Törlés</a></td>
+                            <td><a onclick="return confirm('Biztosan törölni akarja?');" href="deleteBook/{{ $item->id }}">Törlés</a><br />
+                                <a>Módosítás</a><br />
+                                <a>Kiadás</a><br />
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
