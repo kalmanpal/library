@@ -77,6 +77,7 @@ class BookController extends Controller
         // Search in the title and body columns from the posts table
         $books = Book::query()
             ->where('title', 'LIKE', "%{$search1}%")
+            ->join('stocks', 'books.isbn', "=", 'stocks.isbn')
             ->get();
 
         // Return the search view with the resluts compacted
