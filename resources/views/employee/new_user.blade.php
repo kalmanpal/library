@@ -212,7 +212,7 @@
                         <h3>Fiók információk</h3>
                     </legend>
                     <div class="account-details">
-                        <div><label>Email*</label><input type="text" name="email" required></div>
+                        <div><label>Email*</label><input autocomplete="off" type="text" name="email" required></div>
                     </div>
                 </fieldset>
                 <legend>
@@ -220,10 +220,10 @@
                 </legend>
                 <div class="personal-details">
                     <div>
-                        <div><label>Teljes név*</label><input type="text" name="name" required></div>
-                        <div><label>Település*</label><input type="text" name="city" required></div>
-                        <div><label>Cím*</label><input type="text" name="address" required></div>
-                        <div><label>Jelszó*</label><input type="password" name="password" id="passwordrandom" required readonly></div>
+                        <div><label>Teljes név*</label><input autocomplete="off" type="text" name="name" required></div>
+                        <div><label>Település*</label><input autocomplete="off" type="text" name="city" required></div>
+                        <div><label>Cím*</label><input autocomplete="off" type="text" name="address" required></div>
+                        <div><label>Jelszó*</label><input autocomplete="off" type="password" name="password" id="passwordrandom" required readonly></div>
                         <div>
                             <label>Hallgatói státusz*</label>
                             <select name="type">

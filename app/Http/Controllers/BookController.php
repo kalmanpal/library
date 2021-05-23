@@ -70,6 +70,8 @@ class BookController extends Controller
         return redirect('/books');
     }
 
+
+    //---------------book search----------------
     function search1(Request $request){
         // Get the search value from the request
         $search1 = $request->input('search1');
@@ -84,6 +86,8 @@ class BookController extends Controller
         return view('employee/books', compact('books'));
     }
 
+
+    //-----------------book_reservation search----------------------
     function search2(Request $request){
         // Get the search value from the request
         $search2 = $request->input('search2');

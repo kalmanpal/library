@@ -209,12 +209,12 @@
                         <h3>Könyv információk</h3>
                     </legend>
                     <div class="account-details">
-                        <div><label>Cím*</label><input type="text" name="name" required></div>
-                        <div><label>Szerző(k)*</label><input type="text" name="name" required></div>
-                        <div><label>Kiadó*</label><input type="text" name="name" required></div>
-                        <div><label>Kiadás éve*</label><input type="text" name="name" required></div>
-                        <div><label>Kiadás*</label><input type="text" name="name" required></div>
-                        <div><label>ISBN*</label><input type="text" name="name" required></div>
+                        <div><label>Cím*</label><input autocomplete="off" type="text" name="name" required></div>
+                        <div><label>Szerző(k)*</label><input autocomplete="off" type="text" name="name" required></div>
+                        <div><label>Kiadó*</label><input autocomplete="off" type="text" name="name" required></div>
+                        <div><label>Kiadás éve*</label><input autocomplete="off" type="text" name="name" required></div>
+                        <div><label>Kiadás*</label><input autocomplete="off" type="text" name="name" required></div>
+                        <div><label>ISBN*</label><input autocomplete="off" type="text" name="name" required></div>
                     </div>
                 </fieldset>
                 <fieldset>
@@ -223,7 +223,7 @@
                     </legend>
                     <div class="personal-details">
                         <div>
-                            <div><label>Összes könyv (db)*</label><input type="text" name="name" required></div>
+                            <div><label>Összes könyv (db)*</label><input autocomplete="off" type="text" name="name" required></div>
                             <div></div>
                             <div><label style="color:#a0a595">Jelenleg elérhető (db) : xyz </label></div>
                         </div>

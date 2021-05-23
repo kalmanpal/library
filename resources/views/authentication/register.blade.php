@@ -210,10 +210,10 @@
                     <h3>Fiók információk</h3>
                 </legend>
                 <div class="account-details">
-                    <div><label>Email*</label> <input type="text" name="email" required></div>
+                    <div><label>Email*</label> <input autocomplete="off" type="text" name="email" required></div>
                     <div><p style="margin-left:130px; color:red;"><?php echo session('userExistError'); session()->forget('userExistError');?></p></div>
-                    <div><label>Jelszó*</label> <input type="password" name="password" id="password" required></div>
-                    <div><label>Jelszó újra*</label> <input type="password" name="passwordvar" id="passwordvar" required></div>
+                    <div><label>Jelszó*</label> <input autocomplete="off" type="password" name="password" id="password" required></div>
+                    <div><label>Jelszó újra*</label> <input autocomplete="off" type="password" name="passwordvar" id="passwordvar" required></div>
                     <p style= "margin:0 0; margin-left:auto; margin-right:0;" id="errormessage"></p>
                 </div>
             </fieldset>
@@ -223,9 +223,9 @@
                 </legend>
                 <div class="personal-details">
                     <div>
-                        <div><label>Teljes név*</label><input type="text" name="name" required></div>
-                        <div><label>Település*</label><input type="text" name="city" required></div>
-                        <div><label>Cím*</label><input type="text" name="address" required></div>
+                        <div><label>Teljes név*</label><input autocomplete="off" type="text" name="name" required></div>
+                        <div><label>Település*</label><input autocomplete="off" type="text" name="city" required></div>
+                        <div><label>Cím*</label><input autocomplete="off" type="text" name="address" required></div>
                         <div>
                             <label>Hallgatói státusz*</label>
                             <select name="type">

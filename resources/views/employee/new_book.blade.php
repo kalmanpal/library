@@ -210,12 +210,12 @@
                         <h3>Könyv információk</h3>
                     </legend>
                     <div class="account-details">
-                        <div><label>Cím*</label> <input type="text" name="title" required></div>
-                        <div><label>Szerző(k)*</label> <input type="text" name="writer" required></div>
-                        <div><label>Kiadó*</label> <input type="text" name="publisher" required></div>
-                        <div><label>Kiadás éve*</label> <input type="text" name="year" required></div>
-                        <div><label>Kiadás*</label> <input type="text" name="edition" required></div>
-                        <div><label>ISBN*</label> <input type="text" name="isbn" required></div>
+                        <div><label>Cím*</label> <input autocomplete="off" type="text" name="title" required></div>
+                        <div><label>Szerző(k)*</label> <input autocomplete="off" type="text" name="writer" required></div>
+                        <div><label>Kiadó*</label> <input autocomplete="off" type="text" name="publisher" required></div>
+                        <div><label>Kiadás éve*</label> <input autocomplete="off" type="text" name="year" required></div>
+                        <div><label>Kiadás*</label> <input autocomplete="off" type="text" name="edition" required></div>
+                        <div><label>ISBN*</label> <input autocomplete="off" type="text" name="isbn" required></div>
                         <div><p style="margin-left:100px; color:red;"><?php echo session('isbnExistError'); session()->forget('isbnExistError');?></p></div>
                     </div>
                 </fieldset>
@@ -225,7 +225,7 @@
                     </legend>
                     <div class="personal-details">
                         <div>
-                            <div><label>Összes könyv (db)*</label><input type="text" name="max_number" required></div>
+                            <div><label>Összes könyv (db)*</label><input autocomplete="off" type="text" name="max_number" required></div>
                         </div>
 
                     </div>
