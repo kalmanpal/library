@@ -1,6 +1,11 @@
 @extends('layout.menu_layout')
 @section('main_content')
 
+<?php
+    use Carbon\Carbon;
+?>
+
+
 <style>
 
     h1{
@@ -139,6 +144,8 @@
                             <td>{{ $item->deadline }}</td>
                             @if (!!$item->in_date)
                                 <td>{{ $item->in_date }}</td>
+                            @elseif ($item->deadline < Carbon::today())
+                                <td style="color: red">Még nálad van(KÉSÉS)</td>
                             @else
                                 <td style="color: orange">Még nálad van</td>
                             @endif
