@@ -4,6 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,7 +26,36 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(function () {
+            $resToDelete = DB::table('reservations')
+            ->where('expiry',"<",Carbon::today())
+            ->get();
+
+            $isbn = $resToDelete->isbn;
+            $email = $resToDelete->email;
+            $resToDelete->delete();
+
+            $stock = DB::table('stocks')
+            ->where('stocks.isbn', "=", $isbn)
+            ->get();
+
+            $number = $stock->number;
+
+            $stockToSave = DB::table('stocks')
+            ->where('stocks.isbn', $isbn)
+            ->update(['number' => $number + 1]);
+
+            $user = DB::table('users')
+            ->where('users.email', "=", $email)
+            ->get();
+
+            $current = $user->current;
+
+            $userToSave = DB::table('users')
+            ->where('users.email', $email)
+            ->update(['current' => $current - 1]);
+
+        })->daily();
     }
 
     /**

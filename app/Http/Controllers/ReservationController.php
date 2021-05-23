@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Book;
 use App\Models\Stock;
+use App\Models\User;
 use Carbon\Carbon;
 
 
@@ -22,6 +23,7 @@ class ReservationController extends Controller
             ->select('title', 'name', 'reservations.isbn', 'expiry', 'reservations.id')
             ->orderBy('reservations.expiry', 'asc')
             ->get();
+
         return view('employee/reservations', ['reservations' => $data]);
     }
 
