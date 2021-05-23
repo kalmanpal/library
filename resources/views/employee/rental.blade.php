@@ -1,6 +1,11 @@
 @extends('layout.menu_layout')
 @section('main_content')
 
+<?php
+
+    use Carbon\Carbon;
+
+?>
     <style>
         h1 {
             font-size: 50px;
@@ -152,8 +157,10 @@
                             <td>{{ $item->isbn }}</td>
                             @if (!!$item->in_date)
                                 <td style="color:green">Visszahozva</td>
+                            @elseif ($item->deadline < Carbon::today())
+                                <td><a style="color:orange" href="bookIsBack/{{ $item->id }}">Visszavétel(KÉSÉS)</a></td>
                             @else
-                                <td><a href="bookIsBack/{{ $item->id }}">Visszavétel</a></td>
+                            <td><a href="bookIsBack/{{ $item->id }}">Visszavétel</a></td>
                             @endif
                         </tr>
                     @endforeach
