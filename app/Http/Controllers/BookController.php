@@ -102,4 +102,27 @@ class BookController extends Controller
         return view('member/book_reservation', compact('books'));
     }
 
+
+    function bookupdate(Request $req)
+    {
+        $book=Book::find($req->id);
+            $book->title = $req->title;
+            $book->writer = $req->writer;
+            $book->publisher = $req->publisher;
+            $book->year = $req->year;
+            $book->edition = $req->edition;
+            $book->isbn = $req->isbn;
+            $book->save();
+            $stock = new Stock;
+            $stock->max_number = $req->max_number;
+            $stock->number = $req->max_number;
+            $stock->isbn = $req->isbn;
+            $stock->save();
+            session(['updatedata' => 'Az adatok módosítása sikerült!']);
+            return redirect('/data_update');
+
+        }
+
+    }
+
 }

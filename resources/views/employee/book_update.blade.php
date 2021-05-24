@@ -202,19 +202,21 @@
 
     <body>
         <div class="main-block">
-            <form action="/">
+            <form action="/edit" id="form" form="myForm"> 
+            @csrf
+            <input type="hidden" name="id" value= "{{ Book::book()->id }}">
                 <h1>Adja meg a könyv adatait!</h1>
                 <fieldset>
                     <legend>
                         <h3>Könyv információk</h3>
                     </legend>
                     <div class="account-details">
-                        <div><label>Cím*</label><input autocomplete="off" type="text" name="name" required></div>
-                        <div><label>Szerző(k)*</label><input autocomplete="off" type="text" name="name" required></div>
-                        <div><label>Kiadó*</label><input autocomplete="off" type="text" name="name" required></div>
-                        <div><label>Kiadás éve*</label><input autocomplete="off" type="text" name="name" required></div>
-                        <div><label>Kiadás*</label><input autocomplete="off" type="text" name="name" required></div>
-                        <div><label>ISBN*</label><input autocomplete="off" type="text" name="name" required></div>
+                        <div><label>Cím*</label><input value="{{ Book::book()->title }}" autocomplete="off" type="text" name="title" required></div>
+                        <div><label>Szerző(k)*</label><input value="{{ Book::book()->writer }}" autocomplete="off" type="text" name="writer" required></div>
+                        <div><label>Kiadó*</label><input value="{{ Book::book()->publisher }}" autocomplete="off" type="text" name="publisher" required></div>
+                        <div><label>Kiadás éve*</label><input value="{{ Book::book()->year }}" autocomplete="off" type="text" name="year" required></div>
+                        <div><label>Kiadás*</label><input value="{{ Book::book()->edition }}" autocomplete="off" type="text" name="edition" required></div>
+                        <div><label>ISBN*</label><input value="{{ Book::book()->isbn }}" autocomplete="off" type="text" name="name" required></div>
                     </div>
                 </fieldset>
                 <fieldset>
@@ -223,14 +225,14 @@
                     </legend>
                     <div class="personal-details">
                         <div>
-                            <div><label>Összes könyv (db)*</label><input autocomplete="off" type="text" name="name" required></div>
+                            <div><label>Összes könyv (db)*</label><input value="{{ Stock::stock()->max_db }}" autocomplete="off" type="text" name="max_db" required></div>
                             <div></div>
-                            <div><label style="color:#a0a595">Jelenleg elérhető (db) : xyz </label></div>
+                            <div><label style="color:#a0a595">Jelenleg elérhető (db) : xyz </label><input value="{{ Stock::stock()->db }}" autocomplete="off" type="text" name="db" required></div>
                         </div>
 
                     </div>
                 </fieldset>
-                <button type="submit" href="/">Módosítások mentése</button>
+                <button type="submit" href="/books">Módosítások mentése</button>
             </form>
         </div>
     </body>
