@@ -109,5 +109,29 @@ class BookController extends Controller
         return view('member/book_reservation', compact('books'));
     }
 
+//---------------------------------------------------------------------------------------------------------------------------------------
+
+    function getBookData($id)
+    {
+
+        $data = DB::table('books')->join('stocks', 'books.isbn', "=", 'stocks.isbn')
+        ->where([
+            ['books.id', "=", $id],
+            ['stocks.id', "=", $id],
+        ])
+        ->get();
+
+        $dataToView = $data[0];
+
+        return view('employee/book_update', ['book' => $dataToView]);
+
+    }
+
+
+
+
+
+
+
 }
 

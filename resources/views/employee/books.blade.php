@@ -165,7 +165,7 @@
                             <td>
                                 <a onclick="return confirm('Biztosan törölni akarja?');" href="deleteBook/{{ $item->id }}">Törlés</a><br />
                                 <a>Kiadás</a><br />
-                                <strong><a style="margin-right: 35px">+</a><a>-</a><br /></strong>
+                                <a href="getbook/{{ $item->id }}">Módosítás</a><br />
                             </td>
                         </tr>
                     @endforeach

@@ -73,9 +73,13 @@ Route::get('search1', 'App\Http\Controllers\BookController@search1')->name('sear
 Route::view('/new_book','employee/new_book');
 Route::post('/new_book',[BookController::class,'addBook']);
 
-Route::get('/book_update', function () {
-    return view('employee/book_update');
-});
+
+
+
+
+Route::get('book_update',[BookController::class,'getBookData']);
+
+
 
 Route::get('/users',[UserController::class,'show']);
 Route::get('search', 'App\Http\Controllers\UserController@search')->name('search');
