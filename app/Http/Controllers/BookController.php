@@ -103,7 +103,8 @@ class BookController extends Controller
     }
 
 
-    function bookupdate(Request $req)
+
+    /*function bookupdate(Request $req)
     {
         $book=Book::find($req->id);
             $book->title = $req->title;
@@ -123,6 +124,5 @@ class BookController extends Controller
 
         }
 
-    }
-
+    }*/
 }

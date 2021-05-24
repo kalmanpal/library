@@ -126,11 +126,12 @@
         </form>
 
 
-        <form  action="books" method="POST" style="margin-left:auto; margin-right: 0;">
+        <form  action="kiadas" id="form_kiadas" method="POST" style="margin-left:auto; margin-right: 0;">
+        @csrf
                     <input autocomplete="off" name="email" style="margin-left: 5px; margin-right: 5px; margin-bottom: 10px; width: 400px; height: 26px;" type="text" required/>
                     <button style="background-color: #5c5edc; width: 100px; height: 25px;" type="submit"><a href="/books">
                     <span style="color: #FFFFFF">proba kiadas</a></span></button>
-        </form>
+        
         </div>
         <div><p style="text-align: right; margin-left:auto; margin-bottom:5px; margin-right:0px; color:red; margin-top:0px;"><?php echo session('userNotexistError'); session()->forget('userNotexistError');?></p></div>
 
@@ -164,7 +165,7 @@
                             <td>{{ $item->max_number }}</td>
                             <td>
                                 <a onclick="return confirm('Biztosan törölni akarja?');" href="deleteBook/{{ $item->id }}">Törlés</a><br />
-                                <a>Kiadás</a><br />
+                                <a onclick="document.getElementById('form_kiadas').submit()">Kiadás</a><br />
                                 <strong><a style="margin-right: 35px">+</a><a>-</a><br /></strong>
                             </td>
                         </tr>
@@ -172,7 +173,7 @@
                 </tbody>
             </table>
         </div>
-
+        </form>
         <div>
             <button style="margin-top: 50px; margin-left: 100px; background-color: #5c5edc; width: 150px; height: 50px;"> <a
                     href="/new_book">

@@ -96,3 +96,4 @@ Route::get('/test', [StockController::class, 'showBooks']);
 
 
 Route::get('/kiadas',[UserController::class,'kiadas']);
+Route::post('/kiadas',[UserController::class,'kiadas']);
