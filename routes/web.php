@@ -73,13 +73,9 @@ Route::get('search1', 'App\Http\Controllers\BookController@search1')->name('sear
 Route::view('/new_book','employee/new_book');
 Route::post('/new_book',[BookController::class,'addBook']);
 
-
-
-
-
-Route::get('book_update',[BookController::class,'getBookData']);
-
-
+Route::get('/book_update', function () {
+    return view('employee/book_update');
+});
 
 Route::get('/users',[UserController::class,'show']);
 Route::get('search', 'App\Http\Controllers\UserController@search')->name('search');
@@ -88,7 +84,9 @@ Route::view('/new_user','employee/new_user');
 Route::post('new_user',[UserController::class,'addData']);
 
 Route::get('/rental',[RentalController::class,'showRentals']);
-Route::post('rent/{id}',[RentalController::class,'renting']);
+
+Route::post('/rentbook{$id}',[BookController::class,'rent']);
+
 Route::get('rentFromRes/{id}',[RentalController::class,'rentFromRes']);
 Route::get('bookIsBack/{id}',[RentalController::class,'bookBack']);
 
@@ -97,6 +95,11 @@ Route::get('/reservations',[ReservationController::class,'showReservations']);
 //--------------------------------------------------------tests------------------------------------------------------
 
 Route::get('/test', [StockController::class, 'showBooks']);
+
+
+Route::get('/kiadas',[UserController::class,'kiadas']);
+
+ller::class, 'showBooks']);
 
 
 Route::get('/kiadas',[UserController::class,'kiadas']);
