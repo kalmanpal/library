@@ -72,6 +72,7 @@ class BookController extends Controller
 
 
     //---------------book search----------------
+
     function search1(Request $request){
         // Get the search value from the request
         $search1 = $request->input('search1');
@@ -88,6 +89,8 @@ class BookController extends Controller
 
 
     //-----------------book_reservation search----------------------
+
+
     function search2(Request $request){
         // Get the search value from the request
         $search2 = $request->input('search2');
@@ -96,33 +99,15 @@ class BookController extends Controller
         $books = Book::query()
             ->where('title', 'LIKE', "%{$search2}%")
             ->join('stocks', 'books.isbn', "=", 'stocks.isbn')
+            ->where([
+                ['title', 'LIKE', "%{$search2}%"],
+                ['stocks.number', '>', 0],
+            ])
             ->get();
 
         // Return the search view with the resluts compacted
         return view('member/book_reservation', compact('books'));
     }
 
-
-
-    /*function bookupdate(Request $req)
-    {
-        $book=Book::find($req->id);
-            $book->title = $req->title;
-            $book->writer = $req->writer;
-            $book->publisher = $req->publisher;
-            $book->year = $req->year;
-            $book->edition = $req->edition;
-            $book->isbn = $req->isbn;
-            $book->save();
-            $stock = new Stock;
-            $stock->max_number = $req->max_number;
-            $stock->number = $req->max_number;
-            $stock->isbn = $req->isbn;
-            $stock->save();
-            session(['updatedata' => 'Az adatok módosítása sikerült!']);
-            return redirect('/data_update');
-
-        }
-
-    }*/
 }
+
