@@ -84,6 +84,7 @@ Route::view('/new_user','employee/new_user');
 Route::post('new_user',[UserController::class,'addData']);
 
 Route::get('/rental',[RentalController::class,'showRentals']);
+Route::post('rent/{id}',[RentalController::class,'renting']);
 Route::get('rentFromRes/{id}',[RentalController::class,'rentFromRes']);
 Route::get('bookIsBack/{id}',[RentalController::class,'bookBack']);
 

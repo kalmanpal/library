@@ -126,7 +126,7 @@
         </form>
 
 
-        <form  action="kiadas" method="GET" style="margin-left:auto; margin-right: 0;">
+        <form  action="books" method="POST" style="margin-left:auto; margin-right: 0;">
                     <input autocomplete="off" name="email" style="margin-left: 5px; margin-right: 5px; margin-bottom: 10px; width: 400px; height: 26px;" type="text" required/>
                     <button style="background-color: #5c5edc; width: 100px; height: 25px;" type="submit"><a href="/books">
                     <span style="color: #FFFFFF">proba kiadas</a></span></button>
@@ -162,9 +162,10 @@
                             <td>{{ $item->edition }}</td>
                             <td>{{ $item->number }}</td>
                             <td>{{ $item->max_number }}</td>
-                            <td><a onclick="return confirm('Biztosan törölni akarja?');" href="deleteBook/{{ $item->id }}">Törlés</a><br />
-                                <a>Módosítás</a><br />
+                            <td>
+                                <a onclick="return confirm('Biztosan törölni akarja?');" href="deleteBook/{{ $item->id }}">Törlés</a><br />
                                 <a>Kiadás</a><br />
+                                <strong><a style="margin-right: 35px">+</a><a>-</a><br /></strong>
                             </td>
                         </tr>
                     @endforeach
@@ -188,6 +189,12 @@
     if(session()->has('newbook')){
         echo "<script>alert('".session('newbook')."');</script>";
         session()->forget('newbook');
+    }
+    ?>
+    <?php
+    if(session()->has('rent')){
+        echo "<script>alert('".session('rent')."');</script>";
+        session()->forget('rent');
     }
     ?>
 @endsection
