@@ -8,6 +8,7 @@ use App\Models\Reservation;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Stock;
 
 class RentalController extends Controller
 {
@@ -23,7 +24,7 @@ class RentalController extends Controller
         return view('employee/rental', ['rentals' => $data]);
     }
 
-//----------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------
 
     function showMyRentals()
     {
@@ -36,7 +37,7 @@ class RentalController extends Controller
         return view('member/rental_history', ['rentals' => $data]);
     }
 
-//----------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------
 
     function rentFromRes($id)
     {
@@ -50,6 +51,7 @@ class RentalController extends Controller
             ->get();
 
         $type = $seged[0]->type;
+
 
         if ($type == "EH") {
             $rent->deadline = Carbon::today()->addMonth(2);
@@ -77,7 +79,63 @@ class RentalController extends Controller
         return redirect('/rental');
     }
 
-//----------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------
+
+    function renting($id, Request $req)
+    {
+        $stock = Stock::find($id);
+        $rent = new Rental();
+        $rent->out_date = Carbon::today();
+        $rent->isbn = $stock->isbn;
+        $email = $req->email;
+        $rent->email = $email;
+
+        $user = DB::table('users')
+            ->where('email', "=", $email)
+            ->get();
+
+        $type = $user[0]->type;
+        $current = $user[0]->current;
+        $max = $user[0]->max;
+
+        if ($type == "EH") {
+            $rent->deadline = Carbon::today()->addMonth(2);
+        } else
+
+        if ($type == "EO") {
+            $rent->deadline = Carbon::today()->addYear(1);
+        } else
+
+        if ($type == "ME") {
+            $rent->deadline = Carbon::today()->addMonth(1);
+        } else
+
+        if ($type == "E") {
+            $rent->deadline = Carbon::today()->addDays(14);
+        }
+
+
+        if ($user == null) {
+            session(['rent' => 'Nincs ilyen felhasználó regisztrálva!']);
+        } elseif ($current < $max) {
+            $rent->save();
+
+            $userToSave = DB::table('users')
+                ->where('users.email', $email)
+                ->update(['current' => $current + 1]);
+
+            $stock->number = $stock->number - 1;
+            $stock->save();
+            session(['rent' => 'Foglalás Sikeres!']);
+        } else {
+            session(['rent' => 'Egyszerre nem foglalhat, vagy kölcsönözhet több könyvet a felhasználó!']);
+        }
+
+        return redirect('/rental');
+    }
+
+
+    //----------------------------------------------------------------------------------------------------------------------------------
 
     function bookBack($id)
     {
