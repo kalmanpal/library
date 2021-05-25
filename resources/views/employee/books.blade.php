@@ -126,11 +126,8 @@
         </form>
 
 
-        <form  action="kiadas" id="form_kiadas" method="POST" style="margin-left:auto; margin-right: 0;">
-        @csrf
-                    <input autocomplete="off" name="email" style="margin-left: 5px; margin-right: 5px; margin-bottom: 10px; width: 400px; height: 26px;" type="text" required/>
-                    <button style="background-color: #5c5edc; width: 100px; height: 25px;" type="submit"><a href="/books">
-                    <span style="color: #FFFFFF">proba kiadas</a></span></button>
+        
+                    <input id="masteremail" autocomplete="off" name="email" style="margin-left:auto; margin-right: 0; width: 400px; height: 26px;" type="text" required/>
 
         </div>
         <div><p style="text-align: right; margin-left:auto; margin-bottom:5px; margin-right:0px; color:red; margin-top:0px;"><?php echo session('userNotexistError'); session()->forget('userNotexistError');?></p></div>
@@ -155,25 +152,54 @@
             <table cellpadding="1" cellspacing="1" border="0">
                 <tbody>
                     @foreach ($books as $item)
-                        <tr>
-                            <td>{{ $item->title }}</td>
-                            <td>{{ $item->writer }}</td>
-                            <td>{{ $item->isbn }}</td>
-                            <td>{{ $item->year }}</td>
-                            <td>{{ $item->edition }}</td>
-                            <td>{{ $item->number }}</td>
-                            <td>{{ $item->max_number }}</td>
+                    <form  action="rent/{{ $item->id }}/" class="itemforms" id="{{ $item->isbn }}" method="GET" style="margin-left:auto; margin-right: 0;">
+                        @csrf
+                        <tr id="{{ $item->id }}">
+                            <td>
+                            {{ $item->title }}
+                            
+                            </td>
+                            <td>{{ $item->writer }}
+                            
+                            </td>
+                            <td>{{ $item->isbn }}
+                            
+                            </td>
+                            <td>{{ $item->year }}
+                            
+                            </td>
+                            <td>{{ $item->edition }}
+                            
+                            </td>
+                            <td>{{ $item->number }}
+                            
+                            </td>
+                            <td>{{ $item->max_number }}
+                            
+                            </td>
                             <td>
                                 <a onclick="return confirm('Biztosan törölni akarja?');" href="deleteBook/{{ $item->id }}">Törlés</a><br />
-                                <a onclick="document.getElementById('form_kiadas').submit()">Kiadás</a><br />
+                                <input type="hidden" class="emails_hidden">
+                                
+                                <a onclick="emails();getElementById('{{ $item->isbn }}').submit();">Kiadás</a><br />
+                                
                                 <strong><a style="margin-right: 35px">+</a><a>-</a><br /></strong>
                             </td>
                         </tr>
+                        </form>
                     @endforeach
+                    <script>
+                    function emails(){
+                        $('.emails_hidden').val( $('#masteremail').val() );
+                        url = $('.itemforms').attr('action');
+                        $('.itemforms').attr('action', url+$('#masteremail').val());
+                    }
+                    
+                    </script>
                 </tbody>
             </table>
         </div>
-        </form>
+        
         <div>
             <button style="margin-top: 50px; margin-left: 100px; background-color: #5c5edc; width: 150px; height: 50px;"> <a
                     href="/new_book">
@@ -198,4 +224,6 @@
         session()->forget('rent');
     }
     ?>
+
+
 @endsection

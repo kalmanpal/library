@@ -9,6 +9,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Stock;
+use App\Models\User;
+use App\Models\Book;
 
 class RentalController extends Controller
 {
@@ -81,8 +83,19 @@ class RentalController extends Controller
 
     //----------------------------------------------------------------------------------------------------------------------------------
 
-    function renting($id, Request $req)
+    function rent(Request $req, $id)
     {
+
+        # check user if match with database user
+        $users = User::where('email', $req->email)->get();
+
+        # check if email is more than 1
+        if(sizeof($users) > 0){
+            # tell user not to duplicate same email
+            $msg = 'Siker';
+            session(['userNotexistError' => $msg]);
+            
+       
         $stock = Stock::find($id);
         $rent = new Rental();
         $rent->out_date = Carbon::today();
@@ -132,6 +145,15 @@ class RentalController extends Controller
         }
 
         return redirect('/rental');
+
+        }
+        else{
+            $msg = 'Ilyen email-el meg nincs felh regelve';
+            session(['userNotexistError' => $msg]);
+            return back();
+        }
+
+        
     }
 
 

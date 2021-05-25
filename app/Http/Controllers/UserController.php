@@ -113,7 +113,7 @@ class UserController extends Controller
 
     }
     
-    function kiadas(Request $req)
+    /*function kiadas(Request $req)
     {
         # check user if match with database user
         $users = User::where('email', $req->email)->get();
@@ -131,6 +131,6 @@ class UserController extends Controller
             return back();
         }
 
-    }
+    }*/
 
 }

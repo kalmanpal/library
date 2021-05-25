@@ -17,6 +17,7 @@
     <!-- menu styles -->
     <link rel="stylesheet" type="text/css" href="/menucssfold/css/component.css" />
     <script src="/menucssfold/js/modernizr-custom.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 
