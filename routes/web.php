@@ -68,6 +68,9 @@ Route::get('/home', function () {
 
 Route::get('books',[BookController::class,'showBooks']);
 
+Route::get('plusone/{id}',[StockController::class,'plusOneBook']);
+Route::get('minusone/{id}',[StockController::class,'minusOneBook']);
+
 Route::get('deleteBook/{id}',[BookController::class,'delete']);
 
 Route::get('plusone/{id}',[StockController::class,'plusOneBook']);

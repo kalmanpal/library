@@ -92,8 +92,6 @@ class RentalController extends Controller
         # check if email is more than 1
         if(sizeof($users) > 0){
             # tell user not to duplicate same email
-            $msg = 'Siker';
-            session(['userNotexistError' => $msg]);
             
        
         $stock = Stock::find($id);
@@ -148,7 +146,7 @@ class RentalController extends Controller
 
         }
         else{
-            $msg = 'Ilyen email-el meg nincs felh regelve';
+            $msg = 'Ilyen email-el meg nincs felhasználó regisztrálva !';
             session(['userNotexistError' => $msg]);
             return back();
         }

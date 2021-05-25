@@ -126,7 +126,7 @@
         </form>
 
 
-
+        
                     <input id="masteremail" autocomplete="off" name="email" style="margin-left:auto; margin-right: 0; width: 400px; height: 26px;" type="text" required/>
 
         </div>
@@ -153,53 +153,52 @@
                 <tbody>
                     @foreach ($books as $item)
                     <form  action="rent/{{ $item->id }}/" class="itemforms" id="{{ $item->isbn }}" method="GET" style="margin-left:auto; margin-right: 0;">
-                        @csrf
+                        {{ csrf_field() }}
                         <tr id="{{ $item->id }}">
                             <td>
                             {{ $item->title }}
-
+                            
                             </td>
                             <td>{{ $item->writer }}
-
+                            
                             </td>
                             <td>{{ $item->isbn }}
-
+                            
                             </td>
                             <td>{{ $item->year }}
-
+                            
                             </td>
                             <td>{{ $item->edition }}
-
+                            
                             </td>
                             <td>{{ $item->number }}
-
+                            
                             </td>
                             <td>{{ $item->max_number }}
-
+                            
                             </td>
                             <td>
                                 <a onclick="return confirm('Biztosan törölni akarja?');" href="deleteBook/{{ $item->id }}">Törlés</a><br />
                                 <input type="hidden" class="emails_hidden">
-
-                                <a onclick="emails();getElementById('{{ $item->isbn }}').submit();">Kiadás</a><br />
-
+                                
+                                <a onclick="emails('{{ $item->isbn }}');getElementById('{{ $item->isbn }}').submit();">Kiadás</a><br />
+                            
                                 <strong><a href="plusone/{{ $item->id }}" style="margin-right: 35px">+</a><a href="minusone/{{ $item->id }}">-</a><br /></strong>
                             </td>
                         </tr>
                         </form>
                     @endforeach
                     <script>
-                    function emails(){
-                        $('.emails_hidden').val( $('#masteremail').val() );
-                        url = $('.itemforms').attr('action');
-                        $('.itemforms').attr('action', url+$('#masteremail').val());
+                    function emails($isbn){
+                        url = $('#'+$isbn).attr('action');
+                        $('#'+$isbn).attr('action', url+$('#masteremail').val());
                     }
-
+                    
                     </script>
                 </tbody>
             </table>
         </div>
-
+        
         <div>
             <button style="margin-top: 50px; margin-left: 100px; background-color: #5c5edc; width: 150px; height: 50px;"> <a
                     href="/new_book">
@@ -218,13 +217,14 @@
         session()->forget('newbook');
     }
     ?>
-    <?php
+    <?php/*
     if(session()->has('rent')){
         echo "<script>alert('".session('rent')."');</script>";
         session()->forget('rent');
-    }
+    }*/
     ?>
-    <?php
+
+<?php
     if(session()->has('minusbook')){
         echo "<script>alert('".session('minusbook')."');</script>";
         session()->forget('minusbook');

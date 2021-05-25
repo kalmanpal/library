@@ -71,6 +71,10 @@ class UserController extends Controller
         {
             $user->max = 2;
         }
+        if($req->type === "D")
+        {
+            $user->max = 10;
+        }
         $user->current = 0;
         $user-> save();
 
