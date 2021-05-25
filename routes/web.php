@@ -67,7 +67,12 @@ Route::get('/home', function () {
 //-------------------------------------------employee-------------------------------------------------------
 
 Route::get('books',[BookController::class,'showBooks']);
+
 Route::get('deleteBook/{id}',[BookController::class,'delete']);
+
+Route::get('plusone/{id}',[StockController::class,'plusOneBook']);
+Route::get('minusone/{id}',[StockController::class,'minusOneBook']);
+
 Route::get('search1', 'App\Http\Controllers\BookController@search1')->name('search1');
 
 Route::view('/new_book','employee/new_book');
@@ -76,13 +81,13 @@ Route::post('/new_book',[BookController::class,'addBook']);
 Route::get('book_update',[BookController::class,'getBookData']);
 
 Route::get('/users',[UserController::class,'show']);
+
 Route::get('search', 'App\Http\Controllers\UserController@search')->name('search');
 
 Route::view('/new_user','employee/new_user');
 Route::post('new_user',[UserController::class,'addData']);
 
 Route::get('/rental',[RentalController::class,'showRentals']);
-
 
 Route::get('rent/{id}/{email}',[RentalController::class,'rent']);
 
