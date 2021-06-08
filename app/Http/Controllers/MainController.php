@@ -16,6 +16,7 @@ class MainController extends Controller
 
     function checklogin(Request $request)
     {
+
         $this->validate($request, [
             'email'   => 'required|email',
             'password'  => 'required|alphaNum|min:3'
@@ -35,11 +36,13 @@ class MainController extends Controller
 
     function successlogin()
     {
+
         return redirect('/home');
     }
 
     function logout()
     {
+
         Auth::logout();
         return redirect('/');
     }

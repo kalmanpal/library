@@ -171,7 +171,7 @@
         <div>
             <button style="margin-top: 50px; margin-left: 500px; background-color: #5c5edc; width: 150px; height: 50px;"> <a
                     href="/myreservations">
-                    <span class="style2" style="color: #FFFFFF">Korábbi foglalásaim</span></a></button>
+                    <span class="style2" style="color: #FFFFFF">Aktív foglalásaim</span></a></button>
         </div>
     </section>
     <?php

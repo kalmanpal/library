@@ -9,12 +9,14 @@ use App\Mail\SendMail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Session;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
 
     function show()
     {
+
         $data= DB::table('users')
         ->orderBy('name', 'asc')
         ->get();
@@ -23,19 +25,21 @@ class UserController extends Controller
 
     function addData(Request $req)
     {
-        $user = new User;
-        $user-> email=$req->email;
-        $user-> name=$req->name;
-        $user-> city=$req->city;
-        $user-> address=$req->address;
-        $user-> password=bcrypt($req->password);
-        $user-> type=$req->type;
-        $user-> save();
-        return redirect('/users');
+
+            $user = new User;
+            $user-> email=$req->email;
+            $user-> name=$req->name;
+            $user-> city=$req->city;
+            $user-> address=$req->address;
+            $user-> password=bcrypt($req->password);
+            $user-> type=$req->type;
+            $user-> save();
+            return redirect('/users');
     }
 
     function register(Request $req)
     {
+
             # check user if match with database user
             $users = User::where('email', $req->email)->get();
 
@@ -86,6 +90,8 @@ class UserController extends Controller
     }
 
     function search(Request $request){
+        
+
         // Get the search value from the request
         $search = $request->input('search');
 
@@ -100,6 +106,7 @@ class UserController extends Controller
 
     function update(Request $req)
     {
+
         $user=User::find($req->id);
         if(Hash::check($req->password, $user->password)){
             $user-> email=$req->email;
@@ -116,25 +123,5 @@ class UserController extends Controller
         }
 
     }
-    
-    /*function kiadas(Request $req)
-    {
-        # check user if match with database user
-        $users = User::where('email', $req->email)->get();
-
-        # check if email is more than 1
-        if(sizeof($users) > 0){
-            # tell user not to duplicate same email
-            $msg = 'Siker';
-            session(['userNotexistError' => $msg]);
-            return back();
-        }
-        else{
-            $msg = 'Ilyen email-el meg nincs felh regelve';
-            session(['userNotexistError' => $msg]);
-            return back();
-        }
-
-    }*/
 
 }

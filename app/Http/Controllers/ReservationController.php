@@ -17,6 +17,7 @@ class ReservationController extends Controller
 
     function showReservations()
     {
+
         $data = DB::table('reservations')
             ->join('books', 'reservations.isbn', "=", 'books.isbn')
             ->join('users', 'reservations.email', "=", 'users.email')
@@ -31,6 +32,7 @@ class ReservationController extends Controller
 
     function showBooks()
     {
+
         $data = DB::table('stocks')->join('books', 'stocks.isbn', "=", 'books.isbn')
             ->where('stocks.number', '>', 0)
             ->orderBy('title', 'asc')
@@ -42,6 +44,7 @@ class ReservationController extends Controller
 
     function showMyReservations()
     {
+
         $data = DB::table('reservations')
             ->join('stocks', 'reservations.isbn', "=", 'stocks.isbn')
             ->join('books', 'stocks.isbn', "=", 'books.isbn')
@@ -57,6 +60,7 @@ class ReservationController extends Controller
 
     function reserve($id)
     {
+
         $user = DB::table('users')
             ->where('users.email', "=", Auth::user()->email)
             ->get();
@@ -91,6 +95,7 @@ class ReservationController extends Controller
 
     function deleteReservation($id)
     {
+
         $res = Reservation::find($id);
 
         $user = DB::table('users')

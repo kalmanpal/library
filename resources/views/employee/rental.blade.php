@@ -181,5 +181,11 @@
         session()->forget('bookback');
     }
     ?>
+    <?php
+    if(session()->has('successfulrent')){
+        echo "<script>alert('".session('successfulrent')."');</script>";
+        session()->forget('successfulrent');
+    }
+    ?>
 
 @endsection

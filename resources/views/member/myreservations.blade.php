@@ -116,7 +116,7 @@
 
     <section>
         <!--for demo wrap-->
-        <h1>Korábbi foglalásaim</h1>
+        <h1>Aktív foglalásaim</h1>
         <div class="tbl-header">
             <table cellpadding="0" cellspacing="0" border="0">
                 <thead>

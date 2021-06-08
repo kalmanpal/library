@@ -8,12 +8,14 @@ use App\Models\Stock;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
 
     function showBooks()
     {
+
         $data = DB::table('books')->join('stocks', 'books.isbn', "=", 'stocks.isbn')
         ->orderBy('title', 'asc')
         ->get();
@@ -22,6 +24,7 @@ class BookController extends Controller
 
     function delete($id)
     {
+
         $data = Stock::find($id);
         if($data->number == $data->max_number)
         {
@@ -39,6 +42,7 @@ class BookController extends Controller
 
     function addBook(Request $req)
     {
+
          # check user if match with database user
          $books = Book::where('isbn', $req->isbn)->get();
 
@@ -74,6 +78,9 @@ class BookController extends Controller
     //---------------book search----------------
 
     function search1(Request $request){
+
+
+
         // Get the search value from the request
         $search1 = $request->input('search1');
 
@@ -92,6 +99,9 @@ class BookController extends Controller
 
 
     function search2(Request $request){
+
+
+
         // Get the search value from the request
         $search2 = $request->input('search2');
 
@@ -113,6 +123,7 @@ class BookController extends Controller
 
     function getBookData($id)
     {
+
 
         $data = DB::table('books')->join('stocks', 'books.isbn', "=", 'stocks.isbn')
         ->where([

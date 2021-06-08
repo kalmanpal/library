@@ -228,7 +228,7 @@
                         <div><label>Cím*</label><input autocomplete="off" type="text" name="address" required></div>
                         <div>
                             <label>Hallgatói státusz*</label>
-                            <select name="type">
+                            <select name="type" required>
                                 <option value="" >Válasszon...</option>
                                 <option value="EH" type="text" name="type">ELTE hallgató</option>
                                 <option value="EO" type="text" name="type">ELTE oktató</option>
@@ -246,7 +246,7 @@
                 </legend>
                 <div class="terms-mailing">
                     <div class="checkbox">
-                        <input type="checkbox" name="checkbox"><span>I accept the <a
+                        <input required type="checkbox" name="checkbox"><span>I accept the <a
                                 href="https://www.w3docs.com/privacy-policy">Privacy Policy for
                                 W3Docs.</a></span>
                     </div>

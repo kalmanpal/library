@@ -9,14 +9,14 @@
     <meta name="description" content="Blueprint: A basic template for a responsive multi-level menu" />
     <meta name="keywords" content="blueprint, template, html, css, menu, responsive, mobile-friendly" />
     <meta name="author" content="Codrops" />
-    <link rel="shortcut icon" href="/menucssfold/favicon.ico">
+    <link rel="shortcut icon" href="menucssfold/favicon.ico">
     <!-- food icons -->
-    <link rel="stylesheet" type="text/css" href="/menucssfold/css/organicfoodicons.css" />
+    <link rel="stylesheet" type="text/css" href="menucssfold/css/organicfoodicons.css" />
     <!-- demo styles -->
-    <link rel="stylesheet" type="text/css" href="/menucssfold/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="menucssfold/css/demo.css" />
     <!-- menu styles -->
-    <link rel="stylesheet" type="text/css" href="/menucssfold/css/component.css" />
-    <script src="/menucssfold/js/modernizr-custom.js"></script>
+    <link rel="stylesheet" type="text/css" href="menucssfold/css/component.css" />
+    <script src="menucssfold/js/modernizr-custom.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 

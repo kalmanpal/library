@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Stock;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class StockController extends Controller
 {
 
     function showBooks()
     {
+
         $data = DB::table('books')->join('stocks', 'books.isbn', "=", 'stocks.isbn')->get();
         return view('employee/test', ['data' => $data]);
     }
@@ -18,6 +20,7 @@ class StockController extends Controller
 
     function showStock()
     {
+
         $data = DB::table('stocks')->get();
         return view('employee/test', ['stock' => $data]);
     }
@@ -25,6 +28,7 @@ class StockController extends Controller
 
     function plusOneBook($id)
     {
+
         $data = Stock::find($id);
 
         $plusOne = $data->number + 1;
@@ -42,6 +46,8 @@ class StockController extends Controller
 
     function minusOneBook($id)
     {
+
+
         $data = Stock::find($id);
 
         $minusOne = $data->number - 1;

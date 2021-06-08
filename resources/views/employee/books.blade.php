@@ -127,7 +127,7 @@
 
 
         
-                    <input id="masteremail" autocomplete="off" name="email" style="margin-left:auto; margin-right: 0; width: 400px; height: 26px;" type="text" required/>
+                    <input placeholder="Kölcsönző e-mail címe ..." id="masteremail" autocomplete="off" name="email" style="margin-left:auto; margin-right: 0; width: 400px; height: 26px;" type="text" required/>
 
         </div>
         <div><p style="text-align: right; margin-left:auto; margin-bottom:5px; margin-right:0px; color:red; margin-top:0px;"><?php echo session('userNotexistError'); session()->forget('userNotexistError');?></p></div>
@@ -217,14 +217,14 @@
         session()->forget('newbook');
     }
     ?>
-    <?php/*
+    <?php
     if(session()->has('rent')){
         echo "<script>alert('".session('rent')."');</script>";
         session()->forget('rent');
-    }*/
+    }
     ?>
 
-<?php
+    <?php
     if(session()->has('minusbook')){
         echo "<script>alert('".session('minusbook')."');</script>";
         session()->forget('minusbook');

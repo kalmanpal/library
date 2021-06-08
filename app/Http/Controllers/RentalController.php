@@ -17,6 +17,7 @@ class RentalController extends Controller
     //
     function showRentals()
     {
+
         $data = DB::table('rentals')
             ->join('stocks', 'rentals.isbn', "=", 'stocks.isbn')
             ->join('users', 'rentals.email', "=", 'users.email')
@@ -30,6 +31,7 @@ class RentalController extends Controller
 
     function showMyRentals()
     {
+
         $data = DB::table('rentals')
             ->join('stocks', 'rentals.isbn', "=", 'stocks.isbn')
             ->join('books', 'stocks.isbn', "=", 'books.isbn')
@@ -43,6 +45,7 @@ class RentalController extends Controller
 
     function rentFromRes($id)
     {
+
         $res = Reservation::find($id);
         $rent = new Rental();
         $rent->out_date = Carbon::today();
@@ -86,14 +89,7 @@ class RentalController extends Controller
     function rent(Request $req, $id)
     {
 
-        # check user if match with database user
-        $users = User::where('email', $req->email)->get();
 
-        # check if email is more than 1
-        if(sizeof($users) > 0){
-            # tell user not to duplicate same email
-            
-       
         $stock = Stock::find($id);
         $rent = new Rental();
         $rent->out_date = Carbon::today();
@@ -128,7 +124,7 @@ class RentalController extends Controller
 
         if ($user == null) {
             session(['rent' => 'Nincs ilyen felhasználó regisztrálva!']);
-        } elseif ($current < $max) {
+        } elseif (($current < $max) && ($stock->number > 0)) {
             $rent->save();
 
             $userToSave = DB::table('users')
@@ -137,20 +133,12 @@ class RentalController extends Controller
 
             $stock->number = $stock->number - 1;
             $stock->save();
-            session(['rent' => 'Foglalás Sikeres!']);
+            session(['successfulrent' => 'Kölcsönzés Sikeres!']);
+            return redirect('/rental');
         } else {
-            session(['rent' => 'Egyszerre nem foglalhat, vagy kölcsönözhet több könyvet a felhasználó!']);
+            session(['rent' => 'A kölcsönzés sikertelen! (A felhasználó elérte a limitet vagy az adott könyv nem elérhető)']);
+            return redirect('/books');
         }
-
-        return redirect('/rental');
-
-        }
-        else{
-            $msg = 'Ilyen email-el meg nincs felhasználó regisztrálva !';
-            session(['userNotexistError' => $msg]);
-            return back();
-        }
-
         
     }
 
@@ -159,6 +147,7 @@ class RentalController extends Controller
 
     function bookBack($id)
     {
+
         $rent = Rental::find($id);
         $rent->in_date = Carbon::today();
         $email = $rent->email;
